@@ -196,27 +196,30 @@
         <div class="controls-secondary">
           <button onclick="checkPLCStatus()" class="control-btn">Verificar estado PLC</button>
         </div>
+        <!-- Actualiza la sección del donut-chart -->
         <div class="donut-chart">
           <svg viewBox="0 0 42 42" class="donut">
             <!-- Fondo del donut -->
             <circle class="donut-ring" cx="21" cy="21" r="15.915" fill="transparent" stroke="#444" stroke-width="3"></circle>
-            <!-- Segmento verde: valor inicial 60% -->
+            <!-- Segmento verde: pizza con blister -->
             <circle class="donut-segment green" cx="21" cy="21" r="15.915" fill="transparent" stroke="#00ff00" stroke-width="3" stroke-dasharray="60 40" transform="rotate(-90 21 21)"></circle>
-            <!-- Segmento rojo: 40% (con dashoffset -60) -->
+            <!-- Segmento rojo: pizza sin blister -->
             <circle class="donut-segment red" cx="21" cy="21" r="15.915" fill="transparent" stroke="#ff0000" stroke-width="3" stroke-dasharray="40 60" stroke-dashoffset="-60" transform="rotate(-90 21 21)"></circle>
           </svg>
           <div class="donut-counters">
             <div class="counter">
               <span id="green-counter">60%</span>
-              <p>Green</p>
+              <p>Con Blister</p>
+              <span id="green-counter-value">0</span>
             </div>
             <div class="counter">
               <span id="red-counter">40%</span>
-              <p>Red</p>
+              <p>Sin Blister</p>
+              <span id="red-counter-value">0</span>
             </div>
           </div>
-          <!-- Botón de ejemplo para actualizar el donut -->
-          <button onclick="animateDonut(80)">Actualizar a 80% Verde</button>
+          <div id="total-counter" style="margin-top: 10px; font-weight: bold;">Total: 0</div>
+          <button onclick="resetCounters()" class="control-btn" style="margin-top: 10px;">Reiniciar contadores</button>
         </div>
       </div>
     </div>
@@ -314,6 +317,87 @@
       console.log("Verificando estado del PLC...");
       // Forzar actualización inmediata
       updateStatus();
+    }
+
+    // Añadir al final del script existente:
+
+    // Función para actualizar estadísticas periódicamente
+    function updateStatistics() {
+      fetch('/status')
+        .then(response => response.json())
+        .then(data => {
+          // Actualizar el donut chart con porcentajes reales
+          if (data.last_detection) {
+            // Calcular porcentajes
+            const total = data.last_detection.counter_total || 0;
+            
+            if (total > 0) {
+              // Usar directamente el porcentaje con blister para el donut
+              const conBlisterPorcentaje = data.last_detection.porcentaje_con_blister || 0;
+              
+              // Animación del donut
+              animateDonut(conBlisterPorcentaje);
+              
+              // Actualizar contadores numéricos
+              document.getElementById('green-counter-value').textContent = 
+                data.last_detection.counter_con_blister || 0;
+              document.getElementById('red-counter-value').textContent = 
+                data.last_detection.counter_sin_blister || 0;
+              document.getElementById('total-counter').textContent = 
+                `Total: ${total}`;
+            }
+          }
+          
+          // Actualizar estado PLC
+          const plcStatus = document.getElementById('plc-status');
+          if (data.last_detection && data.last_detection.plc_connected) {
+            plcStatus.textContent = 'Conectado';
+            plcStatus.className = 'status-value connected';
+          } else {
+            plcStatus.textContent = 'Desconectado';
+            plcStatus.className = 'status-value disconnected';
+          }
+          
+          // Actualizar estado de detección
+          const detectionStatus = document.getElementById('detection-status');
+          if (data.detection_enabled) {
+            detectionStatus.textContent = 'Activa';
+            detectionStatus.className = 'status-value active';
+          } else {
+            detectionStatus.textContent = 'Inactiva';
+            detectionStatus.className = 'status-value inactive';
+          }
+        })
+        .catch(error => console.error('Error fetching statistics:', error));
+    }
+
+    // Función para reiniciar contadores
+    function resetCounters() {
+      fetch('/api/reset_counters', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            console.log('Contadores reiniciados');
+            // Actualizar inmediatamente
+            updateStatistics();
+          }
+        })
+        .catch(error => console.error('Error resetting counters:', error));
+    }
+
+    // Iniciar la actualización periódica cuando carga la página
+    window.addEventListener('DOMContentLoaded', () => {
+      // Actualizar cada 2 segundos
+      setInterval(updateStatistics, 2000);
+      // Actualización inicial
+      updateStatistics();
+    });
+
+    // Reemplazar la función checkPLCStatus existente
+    function checkPLCStatus() {
+      console.log("Verificando estado del PLC...");
+      // Forzar actualización inmediata
+      updateStatistics();
     }
   </script>
 </body>

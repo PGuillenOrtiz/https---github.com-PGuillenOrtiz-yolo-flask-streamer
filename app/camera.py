@@ -408,12 +408,6 @@ class VideoCamera:
                     self.draw_dot(annotated_frame, config['RED_DOT_POSITION'], 
                                  config['RED_DOT_RADIUS'], config['RED_DOT_COLOR'])
                     
-                    # Añadir texto con porcentaje de confianza
-                    conf_text = f"Pizza: {detections['conf_pizza']}%"
-                    cv2.putText(annotated_frame, conf_text, 
-                               (config['RED_DOT_POSITION'][0] + 15, config['RED_DOT_POSITION'][1] + 5),
-                               cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
-                    
                     # Detectar flanco de subida: de False a True
                     if not previous_red and _plc_client:
                         logger.info("¡FLANCO DETECTADO! Generando pulso para pizza sin blister")
@@ -431,16 +425,6 @@ class VideoCamera:
                     # Caso: pizza con blister - punto verde
                     self.draw_dot(annotated_frame, config['GREEN_DOT_POSITION'], 
                                  config['GREEN_DOT_RADIUS'], config['GREEN_DOT_COLOR'])
-                    
-                    # Añadir texto con porcentajes de confianza
-                    pizza_text = f"Pizza: {detections['conf_pizza']}%"
-                    blister_text = f"Blister: {detections['conf_blister']}%"
-                    cv2.putText(annotated_frame, pizza_text, 
-                               (config['GREEN_DOT_POSITION'][0] + 15, config['GREEN_DOT_POSITION'][1]),
-                               cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-                    cv2.putText(annotated_frame, blister_text, 
-                               (config['GREEN_DOT_POSITION'][0] + 15, config['GREEN_DOT_POSITION'][1] + 20),
-                               cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
                     
                     # Detectar flanco de subida para pizza con blister
                     if not previous_green and _plc_client:
@@ -460,22 +444,6 @@ class VideoCamera:
                     previous_red = False
                     previous_green = False
                 
-                # Añadir estadísticas en la parte superior del frame
-                total = _counter_total if _counter_total > 0 else 1  # Evitar división por cero
-                porcentaje_sin_blister = (_counter_pizza_sin_blister / total) * 100
-                porcentaje_con_blister = (_counter_pizza_con_blister / total) * 100
-                
-                stats_text = f"Sin Blister: {_counter_pizza_sin_blister} ({porcentaje_sin_blister:.1f}%) | Con Blister: {_counter_pizza_con_blister} ({porcentaje_con_blister:.1f}%) | Total: {_counter_total}"
-                cv2.putText(annotated_frame, stats_text, (10, 60), 
-                           cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
-                
-                # Mostrar estado de conexión PLC
-                plc_connected = _plc_client and _plc_client.connected if _plc_client else False
-                plc_status = "PLC: " + ("Conectado ✓" if plc_connected else "Desconectado ✗")
-                cv2.putText(annotated_frame, plc_status, (10, 30), 
-                           cv2.FONT_HERSHEY_SIMPLEX, 0.7, 
-                           (0, 255, 0) if plc_connected else (0, 0, 255), 2)
-                
                 # Actualizar estado global
                 _latest_detections = detections
                 
@@ -487,6 +455,11 @@ class VideoCamera:
                 # Define plc_connected FUERA del bloque condicional
                 plc_connected = _plc_client and _plc_client.connected if _plc_client else False
                 
+                # AÑADIR ESTE CÓDIGO para calcular los porcentajes (sin dibujar en pantalla)
+                total = _counter_total if _counter_total > 0 else 1  # Evitar división por cero
+                porcentaje_sin_blister = (_counter_pizza_sin_blister / total) * 100
+                porcentaje_con_blister = (_counter_pizza_con_blister / total) * 100
+
                 # Actualizar estado compartido
                 timestamp = datetime.datetime.now().isoformat()
                 if hasattr(self, 'shared_state') and self.shared_state:
