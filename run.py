@@ -72,9 +72,24 @@ def status():
     plc_bit0_active = shared_state.last_detection["pizza"] and not shared_state.last_detection["blister"]
     plc_bit1_active = shared_state.last_detection["pizza"] and shared_state.last_detection["blister"]
     
+    # Asegurarse de que todos los campos necesarios estén presentes
+    detection_data = shared_state.last_detection.copy()
+    
+    # Añadir campos si no existen
+    if "counter_sin_blister" not in detection_data:
+        detection_data["counter_sin_blister"] = 0
+    if "counter_con_blister" not in detection_data:
+        detection_data["counter_con_blister"] = 0
+    if "counter_total" not in detection_data:
+        detection_data["counter_total"] = 0
+    if "porcentaje_sin_blister" not in detection_data:
+        detection_data["porcentaje_sin_blister"] = 0
+    if "porcentaje_con_blister" not in detection_data:
+        detection_data["porcentaje_con_blister"] = 0
+    
     return jsonify({
         "detection_enabled": shared_state.detection_enabled,
-        "last_detection": shared_state.last_detection,
+        "last_detection": detection_data,
         "plc_signals": {
             "bit0_pizza_sin_blister": plc_bit0_active,
             "bit1_pizza_con_blister": plc_bit1_active

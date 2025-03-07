@@ -462,6 +462,11 @@ class VideoCamera:
 
                 # Actualizar estado compartido
                 timestamp = datetime.datetime.now().isoformat()
+                
+                logger.debug(f"Actualizando shared_state con: pizza={detections['pizza']}, blister={detections['blister']}, " +
+                             f"contadores=[{_counter_pizza_sin_blister}/{_counter_pizza_con_blister}/{_counter_total}], " +
+                             f"porcentajes=[{porcentaje_sin_blister:.1f}/{porcentaje_con_blister:.1f}]")
+
                 if hasattr(self, 'shared_state') and self.shared_state:
                     self.shared_state.last_detection = {
                         "pizza": detections['pizza'],

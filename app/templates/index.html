@@ -162,6 +162,14 @@
     .control-btn:hover {
     background-color: #777;
     }
+    .status-value.connected {
+    color: green;
+    font-weight: bold;
+    }
+    .status-value.disconnected {
+    color: red;
+    font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -233,18 +241,22 @@
         .then(data => {
           if (data.success) {
             console.log('Detection started');
+            updateStatistics(); // Actualizar estado inmediatamente
           }
         });
     }
+    
     function stopDetection() {
       fetch('/stop_detection', { method: 'POST' })
         .then(response => response.json())
         .then(data => {
           if (data.success) {
             console.log('Detection stopped');
+            updateStatistics(); // Actualizar estado inmediatamente
           }
         });
     }
+    
     // Código para el stream vía WebSocket
     const videoElement = document.getElementById('video-stream');
     function startVideoStream() {
@@ -271,72 +283,54 @@
           console.error('WebSocket error:', error);
       };
     }
-    window.onload = function() {
-      startVideoStream();
-    };
-
-    /* Animación del donut con JavaScript */
-    let currentGreen = 60; // Valor inicial (%)
-    const animationDuration = 1000; // Duración en ms
-
-    function animateDonut(targetGreen, duration = animationDuration) {
-      const startGreen = currentGreen;
-      const startTime = performance.now();
-
-      function update() {
-        const now = performance.now();
-        const elapsed = now - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        // Interpolación lineal
-        const newGreen = startGreen + (targetGreen - startGreen) * progress;
-        currentGreen = newGreen;
-
-        // Cálculo de valores para el SVG
-        const greenValue = newGreen;
-        const redValue = 100 - newGreen;
-
-        // Actualización de los atributos del SVG
-        const greenCircle = document.querySelector('.donut-segment.green');
-        const redCircle = document.querySelector('.donut-segment.red');
-        greenCircle.setAttribute('stroke-dasharray', `${greenValue} ${redValue}`);
-        redCircle.setAttribute('stroke-dasharray', `${redValue} ${greenValue}`);
-        redCircle.setAttribute('stroke-dashoffset', `-${greenValue}`);
-
-        // Actualización de los contadores de texto
-        document.getElementById('green-counter').textContent = `${Math.round(greenValue)}%`;
-        document.getElementById('red-counter').textContent = `${Math.round(redValue)}%`;
-
-        if (progress < 1) {
-          requestAnimationFrame(update);
-        }
-      }
-      requestAnimationFrame(update);
+    
+    // Función para animar y actualizar el donut-chart
+    function animateDonut(porcentajeConBlister) {
+      // Redondeamos a enteros para los porcentajes del SVG
+      const porcentajeConBlisterInt = Math.round(porcentajeConBlister);
+      const porcentajeSinBlisterInt = 100 - porcentajeConBlisterInt;
+      
+      // Actualizar los dos segmentos del donut
+      const greenSegment = document.querySelector('.donut-segment.green');
+      const redSegment = document.querySelector('.donut-segment.red');
+      
+      // El atributo stroke-dasharray controla qué porcentaje del círculo se colorea
+      greenSegment.setAttribute('stroke-dasharray', `${porcentajeConBlisterInt} ${porcentajeSinBlisterInt}`);
+      redSegment.setAttribute('stroke-dasharray', `${porcentajeSinBlisterInt} ${porcentajeConBlisterInt}`);
+      redSegment.setAttribute('stroke-dashoffset', `-${porcentajeConBlisterInt}`);
+      
+      // Actualizar los textos de porcentaje
+      document.getElementById('green-counter').textContent = `${porcentajeConBlisterInt}%`;
+      document.getElementById('red-counter').textContent = `${porcentajeSinBlisterInt}%`;
     }
-
-    function checkPLCStatus() {
-      console.log("Verificando estado del PLC...");
-      // Forzar actualización inmediata
-      updateStatus();
-    }
-
-    // Añadir al final del script existente:
-
+    
     // Función para actualizar estadísticas periódicamente
     function updateStatistics() {
       fetch('/status')
         .then(response => response.json())
         .then(data => {
+          console.log("Datos recibidos:", data); // Para debugging
+          
+          // Actualizar estado del PLC primero (importante - comprobación estricta)
+          const plcStatus = document.getElementById('plc-status');
+          if (data.last_detection && data.last_detection.plc_connected === true) {
+            plcStatus.textContent = 'Conectado';
+            plcStatus.className = 'status-value connected';
+          } else {
+            plcStatus.textContent = 'Desconectado';
+            plcStatus.className = 'status-value disconnected';
+          }
+          
           // Actualizar el donut chart con porcentajes reales
           if (data.last_detection) {
-            // Calcular porcentajes
             const total = data.last_detection.counter_total || 0;
             
             if (total > 0) {
-              // Usar directamente el porcentaje con blister para el donut
-              const conBlisterPorcentaje = data.last_detection.porcentaje_con_blister || 0;
+              // Obtener porcentaje con blister
+              const porcentajeConBlister = data.last_detection.porcentaje_con_blister || 0;
               
-              // Animación del donut
-              animateDonut(conBlisterPorcentaje);
+              // Animar el donut
+              animateDonut(porcentajeConBlister);
               
               // Actualizar contadores numéricos
               document.getElementById('green-counter-value').textContent = 
@@ -346,16 +340,6 @@
               document.getElementById('total-counter').textContent = 
                 `Total: ${total}`;
             }
-          }
-          
-          // Actualizar estado PLC
-          const plcStatus = document.getElementById('plc-status');
-          if (data.last_detection && data.last_detection.plc_connected) {
-            plcStatus.textContent = 'Conectado';
-            plcStatus.className = 'status-value connected';
-          } else {
-            plcStatus.textContent = 'Desconectado';
-            plcStatus.className = 'status-value disconnected';
           }
           
           // Actualizar estado de detección
@@ -368,37 +352,44 @@
             detectionStatus.className = 'status-value inactive';
           }
         })
-        .catch(error => console.error('Error fetching statistics:', error));
+        .catch(error => console.error('Error al obtener estadísticas:', error));
     }
-
-    // Función para reiniciar contadores
-    function resetCounters() {
-      fetch('/api/reset_counters', { method: 'POST' })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            console.log('Contadores reiniciados');
-            // Actualizar inmediatamente
-            updateStatistics();
-          }
-        })
-        .catch(error => console.error('Error resetting counters:', error));
-    }
-
-    // Iniciar la actualización periódica cuando carga la página
-    window.addEventListener('DOMContentLoaded', () => {
-      // Actualizar cada 2 segundos
-      setInterval(updateStatistics, 2000);
-      // Actualización inicial
-      updateStatistics();
-    });
-
-    // Reemplazar la función checkPLCStatus existente
+    
+    // Función para verificar estado del PLC
     function checkPLCStatus() {
       console.log("Verificando estado del PLC...");
       // Forzar actualización inmediata
       updateStatistics();
     }
+    
+    // Función para reiniciar contadores
+    function resetCounters() {
+      fetch('/api/reset_counters', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Respuesta al reiniciar contadores:', data);
+          if (data.success) {
+            console.log('Contadores reiniciados correctamente');
+            // Actualizar inmediatamente la interfaz
+            updateStatistics();
+          }
+        })
+        .catch(error => console.error('Error al reiniciar contadores:', error));
+    }
+    
+    // Inicialización cuando se carga la página
+    window.onload = function() {
+      console.log("Página cargada, iniciando sistema...");
+      
+      // Iniciar stream de video
+      startVideoStream();
+      
+      // Primera actualización de estadísticas
+      updateStatistics();
+      
+      // Actualizar estadísticas cada 2 segundos
+      setInterval(updateStatistics, 2000);
+    };
   </script>
 </body>
 </html>
