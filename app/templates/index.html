@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizza/Blister Detection</title>
+  <style>
+    /* Global */
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin-left: 0;
+      margin-right: auto;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: left;
+      margin-bottom: 20px;
+      border-left: 4px solid #00ff00;
+      padding-left: 10px;
+    }
+    .content {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+    }
+    /* Sección del video y controles */
+    .video-section {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .video-container {
+      border: 3px solid #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(255,255,255,0.2);
+      background-color: #1e1e1e;
+    }
+    .video-container img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .controls {
+      margin-top: 20px;
+      text-align: center;
+      width: 100%;
+    }
+    .controls button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #ffffff;
+      color: #121212;
+    }
+    /* Sección extra: Donut y contenido adicional */
+    .extra-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    /* Estilos para el donut */
+    .donut-chart {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .donut {
+      width: 250px;
+      height: 250px;
+    }
+    .donut-counters {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .counter {
+      text-align: center;
+    }
+    /* Estilo para el porcentaje (valor numérico) */
+    .donut-counters .counter span {
+    font-size: 1.5rem; /* Ajusta este valor según tus necesidades */
+    font-weight: bold;
+    }
+
+    /* Estilo para las etiquetas (ej: "Green", "Red") */
+    .donut-counters .counter p {
+    font-size: 1rem; /* Ajusta este valor según tus necesidades */
+    margin-top: 4px;
+    }
+
+    .status-panel {
+    margin-bottom: 20px;
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 8px;
+    width: 100%;
+    }
+
+    .status-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    }
+
+    .status-label {
+    font-weight: bold;
+    }
+
+    .status-value {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    }
+
+    .status-value.connected {
+    background-color: #00ff00;
+    color: #000;
+    }
+
+    .status-value.disconnected {
+    background-color: #ff0000;
+    color: #fff;
+    }
+
+    .status-value.active {
+    background-color: #00ff00;
+    color: #000;
+    }
+
+    .status-value.inactive {
+    background-color: #ff5500;
+    color: #fff;
+    }
+
+    .controls-secondary {
+    margin-top: 10px;
+    text-align: center;
+    }
+    .control-btn {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+    .control-btn:hover {
+    background-color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Pizza/Blister Detection</h1>
+    </header>
+    <div class="content">
+      <!-- Sección izquierda: video y controles -->
+      <div class="video-section">
+        <div class="video-container">
+          <!-- La URL del stream puede ajustarse según tu backend -->
+          <img id="video-stream" src="/video_feed" alt="Video Stream">
+        </div>
+        <div class="controls">
+          <button onclick="startDetection()">Start Detection</button>
+          <button onclick="stopDetection()">Stop Detection</button>
+        </div>
+      </div>
+      <!-- Sección derecha: Donut y espacio para más contenido -->
+      <div class="extra-section">
+        <div class="status-panel">
+          <div class="status-item">
+              <span class="status-label">Estado PLC:</span>
+              <span id="plc-status" class="status-value disconnected">Desconectado</span>
+          </div>
+          <div class="status-item">
+              <span class="status-label">Detección:</span>
+              <span id="detection-status" class="status-value active">Activa</span>
+          </div>
+        </div>
+        <div class="controls-secondary">
+          <button onclick="checkPLCStatus()" class="control-btn">Verificar estado PLC</button>
+        </div>
+        <div class="donut-chart">
+          <svg viewBox="0 0 42 42" class="donut">
+            <!-- Fondo del donut -->
+            <circle class="donut-ring" cx="21" cy="21" r="15.915" fill="transparent" stroke="#444" stroke-width="3"></circle>
+            <!-- Segmento verde: valor inicial 60% -->
+            <circle class="donut-segment green" cx="21" cy="21" r="15.915" fill="transparent" stroke="#00ff00" stroke-width="3" stroke-dasharray="60 40" transform="rotate(-90 21 21)"></circle>
+            <!-- Segmento rojo: 40% (con dashoffset -60) -->
+            <circle class="donut-segment red" cx="21" cy="21" r="15.915" fill="transparent" stroke="#ff0000" stroke-width="3" stroke-dasharray="40 60" stroke-dashoffset="-60" transform="rotate(-90 21 21)"></circle>
+          </svg>
+          <div class="donut-counters">
+            <div class="counter">
+              <span id="green-counter">60%</span>
+              <p>Green</p>
+            </div>
+            <div class="counter">
+              <span id="red-counter">40%</span>
+              <p>Red</p>
+            </div>
+          </div>
+          <!-- Botón de ejemplo para actualizar el donut -->
+          <button onclick="animateDonut(80)">Actualizar a 80% Verde</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Funciones para iniciar y detener la detección
+    function startDetection() {
+      fetch('/start_detection', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            console.log('Detection started');
+          }
+        });
+    }
+    function stopDetection() {
+      fetch('/stop_detection', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            console.log('Detection stopped');
+          }
+        });
+    }
+    // Código para el stream vía WebSocket
+    const videoElement = document.getElementById('video-stream');
+    function startVideoStream() {
+      // Obtener la dirección del host actual para el WebSocket
+      const protocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
+      const host = window.location.host;
+      const socket = new WebSocket(`${protocol}${host}/video_feed`);
+      
+      socket.onmessage = function(event) {
+          const image = new Image();
+          image.src = URL.createObjectURL(event.data);
+          image.onload = function() {
+              videoElement.src = image.src;
+          };
+      };
+      
+      socket.onclose = function() {
+          console.log('WebSocket connection closed');
+          // Intentar reconectar después de 5 segundos
+          setTimeout(startVideoStream, 5000);
+      };
+      
+      socket.onerror = function(error) {
+          console.error('WebSocket error:', error);
+      };
+    }
+    window.onload = function() {
+      startVideoStream();
+    };
+
+    /* Animación del donut con JavaScript */
+    let currentGreen = 60; // Valor inicial (%)
+    const animationDuration = 1000; // Duración en ms
+
+    function animateDonut(targetGreen, duration = animationDuration) {
+      const startGreen = currentGreen;
+      const startTime = performance.now();
+
+      function update() {
+        const now = performance.now();
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Interpolación lineal
+        const newGreen = startGreen + (targetGreen - startGreen) * progress;
+        currentGreen = newGreen;
+
+        // Cálculo de valores para el SVG
+        const greenValue = newGreen;
+        const redValue = 100 - newGreen;
+
+        // Actualización de los atributos del SVG
+        const greenCircle = document.querySelector('.donut-segment.green');
+        const redCircle = document.querySelector('.donut-segment.red');
+        greenCircle.setAttribute('stroke-dasharray', `${greenValue} ${redValue}`);
+        redCircle.setAttribute('stroke-dasharray', `${redValue} ${greenValue}`);
+        redCircle.setAttribute('stroke-dashoffset', `-${greenValue}`);
+
+        // Actualización de los contadores de texto
+        document.getElementById('green-counter').textContent = `${Math.round(greenValue)}%`;
+        document.getElementById('red-counter').textContent = `${Math.round(redValue)}%`;
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+      requestAnimationFrame(update);
+    }
+
+    function checkPLCStatus() {
+      console.log("Verificando estado del PLC...");
+      // Forzar actualización inmediata
+      updateStatus();
+    }
+  </script>
+</body>
+</html>

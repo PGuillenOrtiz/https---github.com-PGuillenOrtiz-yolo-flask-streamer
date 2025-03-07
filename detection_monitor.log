@@ -1,0 +1,1008 @@
+2025-02-27 13:57:18,553 - INFO - Iniciando monitoreo de detección...
+2025-02-27 13:57:18,562 - ERROR - Error al obtener estado: HTTP 404
+2025-02-27 13:57:23,574 - ERROR - Error al obtener estado: HTTP 404
+2025-02-27 13:57:28,588 - ERROR - Error al obtener estado: HTTP 404
+2025-02-27 13:57:33,602 - ERROR - Error al obtener estado: HTTP 404
+2025-02-27 13:57:38,618 - ERROR - Error al obtener estado: HTTP 404
+2025-02-27 13:57:43,632 - ERROR - Error al obtener estado: HTTP 404
+2025-02-27 13:57:48,647 - ERROR - Error al obtener estado: HTTP 404
+2025-02-27 14:03:51,117 - INFO - Iniciando monitoreo de detección...
+2025-02-27 14:03:51,127 - INFO - Detección activa: True
+2025-02-27 14:03:51,128 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:03:51,128 - INFO - Timestamp: 2025-02-27T13:03:51.075870
+2025-02-27 14:03:51,128 - INFO - --------------------------------------------------
+2025-02-27 14:03:56,137 - INFO - Detección activa: True
+2025-02-27 14:03:56,137 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:03:56,137 - INFO - Timestamp: 2025-02-27T13:03:56.074236
+2025-02-27 14:03:56,137 - INFO - --------------------------------------------------
+2025-02-27 14:04:01,149 - INFO - Detección activa: True
+2025-02-27 14:04:01,150 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:04:01,150 - INFO - Timestamp: 2025-02-27T13:04:01.132806
+2025-02-27 14:04:01,150 - INFO - --------------------------------------------------
+2025-02-27 14:04:06,161 - INFO - Detección activa: True
+2025-02-27 14:04:06,162 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:04:06,162 - INFO - Timestamp: 2025-02-27T13:04:06.094816
+2025-02-27 14:04:06,162 - INFO - --------------------------------------------------
+2025-02-27 14:04:11,174 - INFO - Detección activa: True
+2025-02-27 14:04:11,175 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:04:11,175 - INFO - Timestamp: 2025-02-27T13:04:11.089743
+2025-02-27 14:04:11,175 - INFO - --------------------------------------------------
+2025-02-27 14:04:16,190 - INFO - Detección activa: True
+2025-02-27 14:04:16,191 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:04:16,191 - INFO - Timestamp: 2025-02-27T13:04:16.108222
+2025-02-27 14:04:16,191 - INFO - --------------------------------------------------
+2025-02-27 14:04:21,205 - INFO - Detección activa: True
+2025-02-27 14:04:21,205 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:04:21,205 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:04:21,206 - INFO - --------------------------------------------------
+2025-02-27 14:04:26,217 - INFO - Detección activa: True
+2025-02-27 14:04:26,217 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:04:26,218 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:04:26,218 - INFO - --------------------------------------------------
+2025-02-27 14:04:31,229 - INFO - Detección activa: True
+2025-02-27 14:04:31,229 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:04:31,229 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:04:31,230 - INFO - --------------------------------------------------
+2025-02-27 14:04:36,240 - INFO - Detección activa: True
+2025-02-27 14:04:36,241 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:04:36,241 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:04:36,241 - INFO - --------------------------------------------------
+2025-02-27 14:04:41,253 - INFO - Detección activa: True
+2025-02-27 14:04:41,253 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:04:41,253 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:04:41,254 - INFO - --------------------------------------------------
+2025-02-27 14:04:46,263 - INFO - Detección activa: True
+2025-02-27 14:04:46,263 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:04:46,263 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:04:46,263 - INFO - --------------------------------------------------
+2025-02-27 14:04:51,277 - INFO - Detección activa: True
+2025-02-27 14:04:51,277 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:04:51,278 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:04:51,278 - INFO - --------------------------------------------------
+2025-02-27 14:04:56,289 - INFO - Detección activa: True
+2025-02-27 14:04:56,289 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:04:56,290 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:04:56,290 - INFO - --------------------------------------------------
+2025-02-27 14:05:01,301 - INFO - Detección activa: True
+2025-02-27 14:05:01,301 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:05:01,301 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:05:01,302 - INFO - --------------------------------------------------
+2025-02-27 14:05:06,313 - INFO - Detección activa: True
+2025-02-27 14:05:06,313 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:05:06,313 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:05:06,314 - INFO - --------------------------------------------------
+2025-02-27 14:05:11,326 - INFO - Detección activa: True
+2025-02-27 14:05:11,326 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:05:11,326 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:05:11,326 - INFO - --------------------------------------------------
+2025-02-27 14:05:16,337 - INFO - Detección activa: True
+2025-02-27 14:05:16,337 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:05:16,337 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:05:16,338 - INFO - --------------------------------------------------
+2025-02-27 14:05:21,349 - INFO - Detección activa: True
+2025-02-27 14:05:21,349 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:05:21,349 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:05:21,349 - INFO - --------------------------------------------------
+2025-02-27 14:05:26,361 - INFO - Detección activa: True
+2025-02-27 14:05:26,361 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:05:26,361 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:05:26,361 - INFO - --------------------------------------------------
+2025-02-27 14:05:31,373 - INFO - Detección activa: True
+2025-02-27 14:05:31,373 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:05:31,373 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:05:31,374 - INFO - --------------------------------------------------
+2025-02-27 14:05:36,387 - INFO - Detección activa: True
+2025-02-27 14:05:36,388 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:05:36,388 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:05:36,388 - INFO - --------------------------------------------------
+2025-02-27 14:05:41,402 - INFO - Detección activa: True
+2025-02-27 14:05:41,403 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:05:41,403 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:05:41,403 - INFO - --------------------------------------------------
+2025-02-27 14:05:46,416 - INFO - Detección activa: True
+2025-02-27 14:05:46,416 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:05:46,417 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:05:46,417 - INFO - --------------------------------------------------
+2025-02-27 14:05:51,429 - INFO - Detección activa: True
+2025-02-27 14:05:51,429 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:05:51,430 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:05:51,430 - INFO - --------------------------------------------------
+2025-02-27 14:05:56,442 - INFO - Detección activa: True
+2025-02-27 14:05:56,443 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:05:56,443 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:05:56,444 - INFO - --------------------------------------------------
+2025-02-27 14:06:01,458 - INFO - Detección activa: True
+2025-02-27 14:06:01,458 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:06:01,458 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:06:01,458 - INFO - --------------------------------------------------
+2025-02-27 14:06:06,469 - INFO - Detección activa: True
+2025-02-27 14:06:06,470 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:06:06,470 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:06:06,470 - INFO - --------------------------------------------------
+2025-02-27 14:06:11,481 - INFO - Detección activa: True
+2025-02-27 14:06:11,481 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:06:11,482 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:06:11,482 - INFO - --------------------------------------------------
+2025-02-27 14:06:16,493 - INFO - Detección activa: True
+2025-02-27 14:06:16,494 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:06:16,494 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:06:16,494 - INFO - --------------------------------------------------
+2025-02-27 14:06:21,505 - INFO - Detección activa: True
+2025-02-27 14:06:21,506 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:06:21,506 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:06:21,506 - INFO - --------------------------------------------------
+2025-02-27 14:06:26,517 - INFO - Detección activa: True
+2025-02-27 14:06:26,518 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:06:26,518 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:06:26,518 - INFO - --------------------------------------------------
+2025-02-27 14:06:31,529 - INFO - Detección activa: True
+2025-02-27 14:06:31,529 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:06:31,529 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:06:31,529 - INFO - --------------------------------------------------
+2025-02-27 14:06:36,541 - INFO - Detección activa: True
+2025-02-27 14:06:36,541 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:06:36,541 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:06:36,542 - INFO - --------------------------------------------------
+2025-02-27 14:06:41,553 - INFO - Detección activa: True
+2025-02-27 14:06:41,553 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:06:41,553 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:06:41,554 - INFO - --------------------------------------------------
+2025-02-27 14:06:46,565 - INFO - Detección activa: True
+2025-02-27 14:06:46,565 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:06:46,566 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:06:46,566 - INFO - --------------------------------------------------
+2025-02-27 14:06:51,577 - INFO - Detección activa: True
+2025-02-27 14:06:51,577 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:06:51,577 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:06:51,578 - INFO - --------------------------------------------------
+2025-02-27 14:06:56,589 - INFO - Detección activa: True
+2025-02-27 14:06:56,590 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:06:56,590 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:06:56,590 - INFO - --------------------------------------------------
+2025-02-27 14:07:01,601 - INFO - Detección activa: True
+2025-02-27 14:07:01,601 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:07:01,601 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:07:01,602 - INFO - --------------------------------------------------
+2025-02-27 14:07:06,613 - INFO - Detección activa: True
+2025-02-27 14:07:06,613 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:07:06,613 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:07:06,614 - INFO - --------------------------------------------------
+2025-02-27 14:07:11,625 - INFO - Detección activa: True
+2025-02-27 14:07:11,625 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:07:11,625 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:07:11,626 - INFO - --------------------------------------------------
+2025-02-27 14:07:16,637 - INFO - Detección activa: True
+2025-02-27 14:07:16,638 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:07:16,638 - INFO - Timestamp: 2025-02-27T13:04:18.565854
+2025-02-27 14:07:16,638 - INFO - --------------------------------------------------
+2025-02-27 14:07:21,649 - INFO - Detección activa: True
+2025-02-27 14:07:21,650 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:07:21,650 - INFO - Timestamp: 2025-02-27T13:07:21.582641
+2025-02-27 14:07:21,650 - INFO - --------------------------------------------------
+2025-02-27 14:07:26,662 - INFO - Detección activa: True
+2025-02-27 14:07:26,662 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:07:26,662 - INFO - Timestamp: 2025-02-27T13:07:26.591738
+2025-02-27 14:07:26,662 - INFO - --------------------------------------------------
+2025-02-27 14:07:31,673 - INFO - Detección activa: True
+2025-02-27 14:07:31,674 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:07:31,674 - INFO - Timestamp: 2025-02-27T13:07:31.623726
+2025-02-27 14:07:31,674 - INFO - --------------------------------------------------
+2025-02-27 14:07:36,685 - INFO - Detección activa: True
+2025-02-27 14:07:36,685 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:07:36,685 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:07:36,686 - INFO - --------------------------------------------------
+2025-02-27 14:07:41,699 - INFO - Detección activa: True
+2025-02-27 14:07:41,699 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:07:41,699 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:07:41,699 - INFO - --------------------------------------------------
+2025-02-27 14:07:46,713 - INFO - Detección activa: True
+2025-02-27 14:07:46,713 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:07:46,714 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:07:46,714 - INFO - --------------------------------------------------
+2025-02-27 14:07:51,725 - INFO - Detección activa: True
+2025-02-27 14:07:51,725 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:07:51,725 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:07:51,726 - INFO - --------------------------------------------------
+2025-02-27 14:07:56,737 - INFO - Detección activa: True
+2025-02-27 14:07:56,737 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:07:56,738 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:07:56,738 - INFO - --------------------------------------------------
+2025-02-27 14:08:01,748 - INFO - Detección activa: True
+2025-02-27 14:08:01,748 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:08:01,748 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:08:01,749 - INFO - --------------------------------------------------
+2025-02-27 14:09:33,385 - INFO - Iniciando monitoreo de detección...
+2025-02-27 14:09:33,394 - INFO - Detección activa: True
+2025-02-27 14:09:33,395 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:09:33,395 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:09:33,395 - INFO - --------------------------------------------------
+2025-02-27 14:09:35,405 - INFO - Detección activa: True
+2025-02-27 14:09:35,405 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:09:35,405 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:09:35,405 - INFO - --------------------------------------------------
+2025-02-27 14:09:37,415 - INFO - Detección activa: True
+2025-02-27 14:09:37,415 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:09:37,416 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:09:37,416 - INFO - --------------------------------------------------
+2025-02-27 14:09:39,465 - INFO - Detección activa: True
+2025-02-27 14:09:39,465 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:09:39,465 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:09:39,466 - INFO - --------------------------------------------------
+2025-02-27 14:09:41,477 - INFO - Detección activa: True
+2025-02-27 14:09:41,477 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:09:41,477 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:09:41,478 - INFO - --------------------------------------------------
+2025-02-27 14:09:43,489 - INFO - Detección activa: True
+2025-02-27 14:09:43,490 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:09:43,490 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:09:43,490 - INFO - --------------------------------------------------
+2025-02-27 14:09:45,501 - INFO - Detección activa: True
+2025-02-27 14:09:45,501 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:09:45,501 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:09:45,502 - INFO - --------------------------------------------------
+2025-02-27 14:09:47,512 - INFO - Detección activa: True
+2025-02-27 14:09:47,513 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:09:47,513 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:09:47,513 - INFO - --------------------------------------------------
+2025-02-27 14:14:31,711 - INFO - Iniciando monitoreo de detección...
+2025-02-27 14:14:31,719 - INFO - Detección activa: True
+2025-02-27 14:14:31,719 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:14:31,719 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:14:31,720 - INFO - --------------------------------------------------
+2025-02-27 14:14:33,727 - INFO - Detección activa: True
+2025-02-27 14:14:33,728 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:14:33,728 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:14:33,728 - INFO - --------------------------------------------------
+2025-02-27 14:14:35,736 - INFO - Detección activa: True
+2025-02-27 14:14:35,737 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:14:35,737 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:14:35,737 - INFO - --------------------------------------------------
+2025-02-27 14:14:37,748 - INFO - Detección activa: True
+2025-02-27 14:14:37,748 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:14:37,749 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:14:37,749 - INFO - --------------------------------------------------
+2025-02-27 14:14:39,760 - INFO - Detección activa: True
+2025-02-27 14:14:39,760 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:14:39,761 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:14:39,761 - INFO - --------------------------------------------------
+2025-02-27 14:14:41,771 - INFO - Detección activa: True
+2025-02-27 14:14:41,772 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:14:41,772 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:14:41,772 - INFO - --------------------------------------------------
+2025-02-27 14:14:43,783 - INFO - Detección activa: True
+2025-02-27 14:14:43,784 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:14:43,784 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:14:43,784 - INFO - --------------------------------------------------
+2025-02-27 14:14:45,795 - INFO - Detección activa: True
+2025-02-27 14:14:45,795 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:14:45,795 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:14:45,795 - INFO - --------------------------------------------------
+2025-02-27 14:14:47,805 - INFO - Detección activa: True
+2025-02-27 14:14:47,805 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:14:47,805 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:14:47,805 - INFO - --------------------------------------------------
+2025-02-27 14:14:49,816 - INFO - Detección activa: True
+2025-02-27 14:14:49,817 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:14:49,817 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:14:49,817 - INFO - --------------------------------------------------
+2025-02-27 14:14:51,827 - INFO - Detección activa: True
+2025-02-27 14:14:51,828 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:14:51,828 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:14:51,828 - INFO - --------------------------------------------------
+2025-02-27 14:14:53,839 - INFO - Detección activa: True
+2025-02-27 14:14:53,840 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:14:53,840 - INFO - Timestamp: 2025-02-27T13:07:32.587670
+2025-02-27 14:14:53,840 - INFO - --------------------------------------------------
+2025-02-27 14:14:55,849 - INFO - Detección activa: True
+2025-02-27 14:14:55,849 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:14:55,849 - INFO - Timestamp: 2025-02-27T13:14:55.818759
+2025-02-27 14:14:55,849 - INFO - --------------------------------------------------
+2025-02-27 14:14:57,860 - INFO - Detección activa: True
+2025-02-27 14:14:57,861 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:14:57,861 - INFO - Timestamp: 2025-02-27T13:14:57.786835
+2025-02-27 14:14:57,861 - INFO - --------------------------------------------------
+2025-02-27 14:14:59,872 - INFO - Detección activa: True
+2025-02-27 14:14:59,872 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:14:59,872 - INFO - Timestamp: 2025-02-27T13:14:59.827173
+2025-02-27 14:14:59,872 - INFO - --------------------------------------------------
+2025-02-27 14:15:01,884 - INFO - Detección activa: True
+2025-02-27 14:15:01,884 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:15:01,885 - INFO - Timestamp: 2025-02-27T13:15:01.814652
+2025-02-27 14:15:01,885 - INFO - --------------------------------------------------
+2025-02-27 14:15:03,893 - INFO - Detección activa: True
+2025-02-27 14:15:03,894 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:15:03,894 - INFO - Timestamp: 2025-02-27T13:15:03.877753
+2025-02-27 14:15:03,894 - INFO - --------------------------------------------------
+2025-02-27 14:15:05,905 - INFO - Detección activa: True
+2025-02-27 14:15:05,905 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:15:05,905 - INFO - Timestamp: 2025-02-27T13:15:05.859707
+2025-02-27 14:15:05,906 - INFO - --------------------------------------------------
+2025-02-27 14:15:07,915 - INFO - Detección activa: True
+2025-02-27 14:15:07,916 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:15:07,916 - INFO - Timestamp: 2025-02-27T13:15:07.864173
+2025-02-27 14:15:07,916 - INFO - --------------------------------------------------
+2025-02-27 14:15:09,927 - INFO - Detección activa: True
+2025-02-27 14:15:09,928 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:15:09,928 - INFO - Timestamp: 2025-02-27T13:15:08.119530
+2025-02-27 14:15:09,928 - INFO - --------------------------------------------------
+2025-02-27 14:15:11,939 - INFO - Detección activa: True
+2025-02-27 14:15:11,939 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:15:11,939 - INFO - Timestamp: 2025-02-27T13:15:08.119530
+2025-02-27 14:15:11,940 - INFO - --------------------------------------------------
+2025-02-27 14:15:13,948 - INFO - Detección activa: True
+2025-02-27 14:15:13,949 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:15:13,949 - INFO - Timestamp: 2025-02-27T13:15:08.119530
+2025-02-27 14:15:13,949 - INFO - --------------------------------------------------
+2025-02-27 14:15:15,960 - INFO - Detección activa: True
+2025-02-27 14:15:15,960 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:15:15,960 - INFO - Timestamp: 2025-02-27T13:15:08.119530
+2025-02-27 14:15:15,960 - INFO - --------------------------------------------------
+2025-02-27 14:15:17,971 - INFO - Detección activa: True
+2025-02-27 14:15:17,971 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:15:17,972 - INFO - Timestamp: 2025-02-27T13:15:08.119530
+2025-02-27 14:15:17,972 - INFO - --------------------------------------------------
+2025-02-27 14:15:19,982 - INFO - Detección activa: True
+2025-02-27 14:15:19,983 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:15:19,983 - INFO - Timestamp: 2025-02-27T13:15:08.119530
+2025-02-27 14:15:19,983 - INFO - --------------------------------------------------
+2025-02-27 14:15:21,992 - INFO - Detección activa: True
+2025-02-27 14:15:21,992 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:15:21,993 - INFO - Timestamp: 2025-02-27T13:15:08.119530
+2025-02-27 14:15:21,993 - INFO - --------------------------------------------------
+2025-02-27 14:26:32,507 - INFO - Iniciando monitoreo de detección...
+2025-02-27 14:26:32,516 - INFO - Detección activa: True
+2025-02-27 14:26:32,517 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:26:32,517 - INFO - Timestamp: 2025-02-27T13:26:32.492950
+2025-02-27 14:26:32,517 - INFO - --------------------------------------------------
+2025-02-27 14:26:34,526 - INFO - Detección activa: True
+2025-02-27 14:26:34,527 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:26:34,527 - INFO - Timestamp: 2025-02-27T13:26:34.452013
+2025-02-27 14:26:34,527 - INFO - --------------------------------------------------
+2025-02-27 14:26:36,536 - INFO - Detección activa: True
+2025-02-27 14:26:36,537 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:26:36,537 - INFO - Timestamp: 2025-02-27T13:26:36.488420
+2025-02-27 14:26:36,537 - INFO - --------------------------------------------------
+2025-02-27 14:26:38,548 - INFO - Detección activa: True
+2025-02-27 14:26:38,548 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:26:38,548 - INFO - Timestamp: 2025-02-27T13:26:38.515127
+2025-02-27 14:26:38,549 - INFO - --------------------------------------------------
+2025-02-27 14:26:40,560 - INFO - Detección activa: True
+2025-02-27 14:26:40,560 - INFO - Última detección: Pizza: False, Blister: True
+2025-02-27 14:26:40,560 - INFO - Timestamp: 2025-02-27T13:26:40.498475
+2025-02-27 14:26:40,560 - INFO - --------------------------------------------------
+2025-02-27 14:26:42,568 - INFO - Detección activa: True
+2025-02-27 14:26:42,568 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:26:42,568 - INFO - Timestamp: 2025-02-27T13:26:42.541744
+2025-02-27 14:26:42,568 - INFO - --------------------------------------------------
+2025-02-27 14:26:44,580 - INFO - Detección activa: True
+2025-02-27 14:26:44,581 - INFO - Última detección: Pizza: False, Blister: True
+2025-02-27 14:26:44,581 - INFO - Timestamp: 2025-02-27T13:26:44.507601
+2025-02-27 14:26:44,581 - INFO - --------------------------------------------------
+2025-02-27 14:26:46,592 - INFO - Detección activa: True
+2025-02-27 14:26:46,592 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:26:46,593 - INFO - Timestamp: 2025-02-27T13:26:46.544282
+2025-02-27 14:26:46,593 - INFO - --------------------------------------------------
+2025-02-27 14:26:48,604 - INFO - Detección activa: True
+2025-02-27 14:26:48,605 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:26:48,605 - INFO - Timestamp: 2025-02-27T13:26:48.579180
+2025-02-27 14:26:48,605 - INFO - --------------------------------------------------
+2025-02-27 14:26:50,617 - INFO - Detección activa: True
+2025-02-27 14:26:50,617 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:26:50,618 - INFO - Timestamp: 2025-02-27T13:26:50.537983
+2025-02-27 14:26:50,618 - INFO - --------------------------------------------------
+2025-02-27 14:26:52,629 - INFO - Detección activa: True
+2025-02-27 14:26:52,629 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:26:52,629 - INFO - Timestamp: 2025-02-27T13:26:52.554800
+2025-02-27 14:26:52,630 - INFO - --------------------------------------------------
+2025-02-27 14:26:54,640 - INFO - Detección activa: True
+2025-02-27 14:26:54,641 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:26:54,641 - INFO - Timestamp: 2025-02-27T13:26:54.558034
+2025-02-27 14:26:54,641 - INFO - --------------------------------------------------
+2025-02-27 14:26:56,650 - INFO - Detección activa: True
+2025-02-27 14:26:56,650 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:26:56,650 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:26:56,650 - INFO - --------------------------------------------------
+2025-02-27 14:26:58,658 - INFO - Detección activa: True
+2025-02-27 14:26:58,659 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:26:58,659 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:26:58,659 - INFO - --------------------------------------------------
+2025-02-27 14:27:00,669 - INFO - Detección activa: True
+2025-02-27 14:27:00,669 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:00,669 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:00,669 - INFO - --------------------------------------------------
+2025-02-27 14:27:02,680 - INFO - Detección activa: True
+2025-02-27 14:27:02,680 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:02,680 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:02,681 - INFO - --------------------------------------------------
+2025-02-27 14:27:04,691 - INFO - Detección activa: True
+2025-02-27 14:27:04,691 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:04,692 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:04,692 - INFO - --------------------------------------------------
+2025-02-27 14:27:06,701 - INFO - Detección activa: True
+2025-02-27 14:27:06,701 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:06,701 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:06,701 - INFO - --------------------------------------------------
+2025-02-27 14:27:08,712 - INFO - Detección activa: True
+2025-02-27 14:27:08,712 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:08,713 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:08,713 - INFO - --------------------------------------------------
+2025-02-27 14:27:10,723 - INFO - Detección activa: True
+2025-02-27 14:27:10,723 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:10,724 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:10,724 - INFO - --------------------------------------------------
+2025-02-27 14:27:12,734 - INFO - Detección activa: True
+2025-02-27 14:27:12,734 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:12,735 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:12,735 - INFO - --------------------------------------------------
+2025-02-27 14:27:14,742 - INFO - Detección activa: True
+2025-02-27 14:27:14,742 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:14,743 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:14,743 - INFO - --------------------------------------------------
+2025-02-27 14:27:16,753 - INFO - Detección activa: True
+2025-02-27 14:27:16,753 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:16,753 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:16,753 - INFO - --------------------------------------------------
+2025-02-27 14:27:18,764 - INFO - Detección activa: True
+2025-02-27 14:27:18,764 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:18,764 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:18,765 - INFO - --------------------------------------------------
+2025-02-27 14:27:20,775 - INFO - Detección activa: True
+2025-02-27 14:27:20,775 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:20,776 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:20,776 - INFO - --------------------------------------------------
+2025-02-27 14:27:22,785 - INFO - Detección activa: True
+2025-02-27 14:27:22,785 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:22,786 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:22,786 - INFO - --------------------------------------------------
+2025-02-27 14:27:24,796 - INFO - Detección activa: True
+2025-02-27 14:27:24,797 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:24,797 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:24,797 - INFO - --------------------------------------------------
+2025-02-27 14:27:26,808 - INFO - Detección activa: True
+2025-02-27 14:27:26,808 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:26,808 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:26,809 - INFO - --------------------------------------------------
+2025-02-27 14:27:28,818 - INFO - Detección activa: True
+2025-02-27 14:27:28,818 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:28,819 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:28,819 - INFO - --------------------------------------------------
+2025-02-27 14:27:30,827 - INFO - Detección activa: True
+2025-02-27 14:27:30,827 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:30,828 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:30,828 - INFO - --------------------------------------------------
+2025-02-27 14:27:32,839 - INFO - Detección activa: True
+2025-02-27 14:27:32,839 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:32,839 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:32,839 - INFO - --------------------------------------------------
+2025-02-27 14:27:34,849 - INFO - Detección activa: True
+2025-02-27 14:27:34,849 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:34,850 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:34,850 - INFO - --------------------------------------------------
+2025-02-27 14:27:36,859 - INFO - Detección activa: True
+2025-02-27 14:27:36,860 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:36,860 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:36,860 - INFO - --------------------------------------------------
+2025-02-27 14:27:38,868 - INFO - Detección activa: True
+2025-02-27 14:27:38,869 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:38,869 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:38,869 - INFO - --------------------------------------------------
+2025-02-27 14:27:40,880 - INFO - Detección activa: True
+2025-02-27 14:27:40,880 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:40,880 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:40,880 - INFO - --------------------------------------------------
+2025-02-27 14:27:42,890 - INFO - Detección activa: True
+2025-02-27 14:27:42,890 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:42,890 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:42,890 - INFO - --------------------------------------------------
+2025-02-27 14:27:44,901 - INFO - Detección activa: True
+2025-02-27 14:27:44,901 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:44,901 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:44,901 - INFO - --------------------------------------------------
+2025-02-27 14:27:46,911 - INFO - Detección activa: True
+2025-02-27 14:27:46,912 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:46,912 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:46,912 - INFO - --------------------------------------------------
+2025-02-27 14:27:48,922 - INFO - Detección activa: True
+2025-02-27 14:27:48,923 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:48,923 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:48,923 - INFO - --------------------------------------------------
+2025-02-27 14:27:50,934 - INFO - Detección activa: True
+2025-02-27 14:27:50,934 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:50,935 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:50,935 - INFO - --------------------------------------------------
+2025-02-27 14:27:52,945 - INFO - Detección activa: True
+2025-02-27 14:27:52,946 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:52,946 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:52,946 - INFO - --------------------------------------------------
+2025-02-27 14:27:54,955 - INFO - Detección activa: True
+2025-02-27 14:27:54,956 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:54,956 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:54,956 - INFO - --------------------------------------------------
+2025-02-27 14:27:56,967 - INFO - Detección activa: True
+2025-02-27 14:27:56,968 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:56,968 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:56,968 - INFO - --------------------------------------------------
+2025-02-27 14:27:58,979 - INFO - Detección activa: True
+2025-02-27 14:27:58,980 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:27:58,980 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:27:58,980 - INFO - --------------------------------------------------
+2025-02-27 14:28:00,991 - INFO - Detección activa: True
+2025-02-27 14:28:00,991 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:00,991 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:00,992 - INFO - --------------------------------------------------
+2025-02-27 14:28:03,000 - INFO - Detección activa: True
+2025-02-27 14:28:03,000 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:03,000 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:03,000 - INFO - --------------------------------------------------
+2025-02-27 14:28:05,011 - INFO - Detección activa: True
+2025-02-27 14:28:05,012 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:05,012 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:05,013 - INFO - --------------------------------------------------
+2025-02-27 14:28:07,022 - INFO - Detección activa: True
+2025-02-27 14:28:07,022 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:07,023 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:07,023 - INFO - --------------------------------------------------
+2025-02-27 14:28:09,032 - INFO - Detección activa: True
+2025-02-27 14:28:09,033 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:09,033 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:09,033 - INFO - --------------------------------------------------
+2025-02-27 14:28:11,044 - INFO - Detección activa: True
+2025-02-27 14:28:11,044 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:11,045 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:11,045 - INFO - --------------------------------------------------
+2025-02-27 14:28:13,055 - INFO - Detección activa: True
+2025-02-27 14:28:13,055 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:13,055 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:13,055 - INFO - --------------------------------------------------
+2025-02-27 14:28:15,065 - INFO - Detección activa: True
+2025-02-27 14:28:15,066 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:15,066 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:15,066 - INFO - --------------------------------------------------
+2025-02-27 14:28:17,077 - INFO - Detección activa: True
+2025-02-27 14:28:17,077 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:17,077 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:17,078 - INFO - --------------------------------------------------
+2025-02-27 14:28:19,088 - INFO - Detección activa: True
+2025-02-27 14:28:19,088 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:19,088 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:19,088 - INFO - --------------------------------------------------
+2025-02-27 14:28:21,098 - INFO - Detección activa: True
+2025-02-27 14:28:21,098 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:21,098 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:21,098 - INFO - --------------------------------------------------
+2025-02-27 14:28:23,109 - INFO - Detección activa: True
+2025-02-27 14:28:23,109 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:23,109 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:23,110 - INFO - --------------------------------------------------
+2025-02-27 14:28:25,120 - INFO - Detección activa: True
+2025-02-27 14:28:25,120 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:25,120 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:25,120 - INFO - --------------------------------------------------
+2025-02-27 14:28:27,130 - INFO - Detección activa: True
+2025-02-27 14:28:27,130 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:27,131 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:27,131 - INFO - --------------------------------------------------
+2025-02-27 14:28:29,141 - INFO - Detección activa: True
+2025-02-27 14:28:29,142 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:29,142 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:29,142 - INFO - --------------------------------------------------
+2025-02-27 14:28:31,153 - INFO - Detección activa: True
+2025-02-27 14:28:31,153 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:31,153 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:31,153 - INFO - --------------------------------------------------
+2025-02-27 14:28:33,162 - INFO - Detección activa: True
+2025-02-27 14:28:33,163 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:33,163 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:33,163 - INFO - --------------------------------------------------
+2025-02-27 14:28:35,171 - INFO - Detección activa: True
+2025-02-27 14:28:35,171 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:35,171 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:35,171 - INFO - --------------------------------------------------
+2025-02-27 14:28:37,180 - INFO - Detección activa: True
+2025-02-27 14:28:37,180 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:37,180 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:37,180 - INFO - --------------------------------------------------
+2025-02-27 14:28:39,191 - INFO - Detección activa: True
+2025-02-27 14:28:39,192 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:39,192 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:39,192 - INFO - --------------------------------------------------
+2025-02-27 14:28:41,201 - INFO - Detección activa: True
+2025-02-27 14:28:41,201 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:41,201 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:41,202 - INFO - --------------------------------------------------
+2025-02-27 14:28:43,212 - INFO - Detección activa: True
+2025-02-27 14:28:43,213 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:43,213 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:43,213 - INFO - --------------------------------------------------
+2025-02-27 14:28:45,224 - INFO - Detección activa: True
+2025-02-27 14:28:45,225 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:45,225 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:45,225 - INFO - --------------------------------------------------
+2025-02-27 14:28:47,234 - INFO - Detección activa: True
+2025-02-27 14:28:47,234 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:47,235 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:47,235 - INFO - --------------------------------------------------
+2025-02-27 14:28:49,245 - INFO - Detección activa: True
+2025-02-27 14:28:49,245 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:49,245 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:49,245 - INFO - --------------------------------------------------
+2025-02-27 14:28:51,256 - INFO - Detección activa: True
+2025-02-27 14:28:51,258 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:51,258 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:51,259 - INFO - --------------------------------------------------
+2025-02-27 14:28:53,271 - INFO - Detección activa: True
+2025-02-27 14:28:53,271 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:53,271 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:53,271 - INFO - --------------------------------------------------
+2025-02-27 14:28:55,282 - INFO - Detección activa: True
+2025-02-27 14:28:55,282 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:55,282 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:55,282 - INFO - --------------------------------------------------
+2025-02-27 14:28:57,291 - INFO - Detección activa: True
+2025-02-27 14:28:57,292 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:57,292 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:57,292 - INFO - --------------------------------------------------
+2025-02-27 14:28:59,303 - INFO - Detección activa: True
+2025-02-27 14:28:59,303 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:28:59,303 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:28:59,303 - INFO - --------------------------------------------------
+2025-02-27 14:29:01,314 - INFO - Detección activa: True
+2025-02-27 14:29:01,314 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:01,315 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:01,315 - INFO - --------------------------------------------------
+2025-02-27 14:29:03,325 - INFO - Detección activa: True
+2025-02-27 14:29:03,326 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:03,326 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:03,326 - INFO - --------------------------------------------------
+2025-02-27 14:29:05,337 - INFO - Detección activa: True
+2025-02-27 14:29:05,338 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:05,338 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:05,338 - INFO - --------------------------------------------------
+2025-02-27 14:29:07,349 - INFO - Detección activa: True
+2025-02-27 14:29:07,349 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:07,349 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:07,350 - INFO - --------------------------------------------------
+2025-02-27 14:29:09,360 - INFO - Detección activa: True
+2025-02-27 14:29:09,361 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:09,361 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:09,361 - INFO - --------------------------------------------------
+2025-02-27 14:29:11,372 - INFO - Detección activa: True
+2025-02-27 14:29:11,372 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:11,372 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:11,372 - INFO - --------------------------------------------------
+2025-02-27 14:29:13,383 - INFO - Detección activa: True
+2025-02-27 14:29:13,384 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:13,384 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:13,384 - INFO - --------------------------------------------------
+2025-02-27 14:29:15,394 - INFO - Detección activa: True
+2025-02-27 14:29:15,395 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:15,395 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:15,395 - INFO - --------------------------------------------------
+2025-02-27 14:29:17,406 - INFO - Detección activa: True
+2025-02-27 14:29:17,406 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:17,406 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:17,406 - INFO - --------------------------------------------------
+2025-02-27 14:29:19,417 - INFO - Detección activa: True
+2025-02-27 14:29:19,417 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:19,418 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:19,418 - INFO - --------------------------------------------------
+2025-02-27 14:29:21,428 - INFO - Detección activa: True
+2025-02-27 14:29:21,429 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:21,429 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:21,429 - INFO - --------------------------------------------------
+2025-02-27 14:29:23,440 - INFO - Detección activa: True
+2025-02-27 14:29:23,441 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:23,441 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:23,442 - INFO - --------------------------------------------------
+2025-02-27 14:29:25,452 - INFO - Detección activa: True
+2025-02-27 14:29:25,452 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:25,453 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:25,453 - INFO - --------------------------------------------------
+2025-02-27 14:29:27,463 - INFO - Detección activa: True
+2025-02-27 14:29:27,464 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:27,464 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:27,464 - INFO - --------------------------------------------------
+2025-02-27 14:29:29,475 - INFO - Detección activa: True
+2025-02-27 14:29:29,475 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:29,475 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:29,476 - INFO - --------------------------------------------------
+2025-02-27 14:29:31,485 - INFO - Detección activa: True
+2025-02-27 14:29:31,485 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:31,485 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:31,486 - INFO - --------------------------------------------------
+2025-02-27 14:29:33,496 - INFO - Detección activa: True
+2025-02-27 14:29:33,497 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:33,497 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:33,497 - INFO - --------------------------------------------------
+2025-02-27 14:29:35,508 - INFO - Detección activa: True
+2025-02-27 14:29:35,508 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:29:35,508 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:29:35,508 - INFO - --------------------------------------------------
+2025-02-27 14:34:07,806 - INFO - Iniciando monitoreo de detección...
+2025-02-27 14:34:07,815 - INFO - Detección activa: True
+2025-02-27 14:34:07,815 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:34:07,815 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:34:07,815 - INFO - --------------------------------------------------
+2025-02-27 14:34:09,824 - INFO - Detección activa: True
+2025-02-27 14:34:09,824 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:34:09,825 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:34:09,825 - INFO - --------------------------------------------------
+2025-02-27 14:34:11,834 - INFO - Detección activa: True
+2025-02-27 14:34:11,835 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:34:11,835 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:34:11,835 - INFO - --------------------------------------------------
+2025-02-27 14:34:13,845 - INFO - Detección activa: True
+2025-02-27 14:34:13,846 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:34:13,846 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:34:13,846 - INFO - --------------------------------------------------
+2025-02-27 14:34:15,856 - INFO - Detección activa: True
+2025-02-27 14:34:15,857 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:34:15,857 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:34:15,857 - INFO - --------------------------------------------------
+2025-02-27 14:34:17,868 - INFO - Detección activa: True
+2025-02-27 14:34:17,869 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:34:17,869 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:34:17,869 - INFO - --------------------------------------------------
+2025-02-27 14:34:19,880 - INFO - Detección activa: True
+2025-02-27 14:34:19,881 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:34:19,881 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:34:19,881 - INFO - --------------------------------------------------
+2025-02-27 14:34:21,892 - INFO - Detección activa: True
+2025-02-27 14:34:21,892 - INFO - Última detección: Pizza: True, Blister: True
+2025-02-27 14:34:21,892 - INFO - Timestamp: 2025-02-27T13:26:56.569774
+2025-02-27 14:34:21,893 - INFO - --------------------------------------------------
+2025-02-27 14:37:12,717 - INFO - Iniciando monitoreo de detección...
+2025-02-27 14:37:12,728 - INFO - Detección activa: True
+2025-02-27 14:37:12,728 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:12,728 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:12,728 - INFO - --------------------------------------------------
+2025-02-27 14:37:14,737 - INFO - Detección activa: True
+2025-02-27 14:37:14,737 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:14,738 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:14,738 - INFO - --------------------------------------------------
+2025-02-27 14:37:16,748 - INFO - Detección activa: True
+2025-02-27 14:37:16,749 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:16,749 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:16,749 - INFO - --------------------------------------------------
+2025-02-27 14:37:18,760 - INFO - Detección activa: True
+2025-02-27 14:37:18,760 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:18,760 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:18,760 - INFO - --------------------------------------------------
+2025-02-27 14:37:20,771 - INFO - Detección activa: True
+2025-02-27 14:37:20,773 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:20,773 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:20,774 - INFO - --------------------------------------------------
+2025-02-27 14:37:22,785 - INFO - Detección activa: True
+2025-02-27 14:37:22,786 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:22,786 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:22,786 - INFO - --------------------------------------------------
+2025-02-27 14:37:24,795 - INFO - Detección activa: True
+2025-02-27 14:37:24,796 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:24,796 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:24,796 - INFO - --------------------------------------------------
+2025-02-27 14:37:26,807 - INFO - Detección activa: True
+2025-02-27 14:37:26,807 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:26,808 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:26,808 - INFO - --------------------------------------------------
+2025-02-27 14:37:28,819 - INFO - Detección activa: True
+2025-02-27 14:37:28,819 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:28,819 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:28,819 - INFO - --------------------------------------------------
+2025-02-27 14:37:30,830 - INFO - Detección activa: True
+2025-02-27 14:37:30,831 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:30,831 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:30,831 - INFO - --------------------------------------------------
+2025-02-27 14:37:32,842 - INFO - Detección activa: True
+2025-02-27 14:37:32,842 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:32,842 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:32,842 - INFO - --------------------------------------------------
+2025-02-27 14:37:34,853 - INFO - Detección activa: True
+2025-02-27 14:37:34,854 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:34,854 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:34,855 - INFO - --------------------------------------------------
+2025-02-27 14:37:36,865 - INFO - Detección activa: True
+2025-02-27 14:37:36,866 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:36,866 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:36,866 - INFO - --------------------------------------------------
+2025-02-27 14:37:38,874 - INFO - Detección activa: True
+2025-02-27 14:37:38,875 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:38,875 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:38,875 - INFO - --------------------------------------------------
+2025-02-27 14:37:40,886 - INFO - Detección activa: True
+2025-02-27 14:37:40,886 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:40,886 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:40,886 - INFO - --------------------------------------------------
+2025-02-27 14:37:42,897 - INFO - Detección activa: True
+2025-02-27 14:37:42,898 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:42,898 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:42,898 - INFO - --------------------------------------------------
+2025-02-27 14:37:44,909 - INFO - Detección activa: True
+2025-02-27 14:37:44,909 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:44,910 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:44,910 - INFO - --------------------------------------------------
+2025-02-27 14:37:46,920 - INFO - Detección activa: True
+2025-02-27 14:37:46,921 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:46,921 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:46,921 - INFO - --------------------------------------------------
+2025-02-27 14:37:48,932 - INFO - Detección activa: True
+2025-02-27 14:37:48,932 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:48,933 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:48,933 - INFO - --------------------------------------------------
+2025-02-27 14:37:50,944 - INFO - Detección activa: True
+2025-02-27 14:37:50,944 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:50,944 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:50,945 - INFO - --------------------------------------------------
+2025-02-27 14:37:52,954 - INFO - Detección activa: True
+2025-02-27 14:37:52,955 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:52,955 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:52,955 - INFO - --------------------------------------------------
+2025-02-27 14:37:54,967 - INFO - Detección activa: True
+2025-02-27 14:37:54,967 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:54,967 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:54,967 - INFO - --------------------------------------------------
+2025-02-27 14:37:56,979 - INFO - Detección activa: True
+2025-02-27 14:37:56,979 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:56,980 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:56,980 - INFO - --------------------------------------------------
+2025-02-27 14:37:58,994 - INFO - Detección activa: True
+2025-02-27 14:37:58,995 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:37:58,995 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:37:58,995 - INFO - --------------------------------------------------
+2025-02-27 14:38:01,007 - INFO - Detección activa: True
+2025-02-27 14:38:01,007 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:38:01,007 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:38:01,007 - INFO - --------------------------------------------------
+2025-02-27 14:38:03,018 - INFO - Detección activa: True
+2025-02-27 14:38:03,018 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:38:03,019 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:38:03,019 - INFO - --------------------------------------------------
+2025-02-27 14:38:05,030 - INFO - Detección activa: True
+2025-02-27 14:38:05,030 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:38:05,030 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:38:05,031 - INFO - --------------------------------------------------
+2025-02-27 14:38:07,042 - INFO - Detección activa: True
+2025-02-27 14:38:07,043 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:38:07,043 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:38:07,043 - INFO - --------------------------------------------------
+2025-02-27 14:38:09,055 - INFO - Detección activa: True
+2025-02-27 14:38:09,056 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:38:09,056 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:38:09,056 - INFO - --------------------------------------------------
+2025-02-27 14:38:11,067 - INFO - Detección activa: True
+2025-02-27 14:38:11,067 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:38:11,067 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:38:11,068 - INFO - --------------------------------------------------
+2025-02-27 14:38:13,078 - INFO - Detección activa: True
+2025-02-27 14:38:13,079 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:38:13,079 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:38:13,079 - INFO - --------------------------------------------------
+2025-02-27 14:38:15,090 - INFO - Detección activa: True
+2025-02-27 14:38:15,091 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:38:15,091 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:38:15,091 - INFO - --------------------------------------------------
+2025-02-27 14:38:17,102 - INFO - Detección activa: True
+2025-02-27 14:38:17,103 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:38:17,103 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:38:17,103 - INFO - --------------------------------------------------
+2025-02-27 14:38:19,112 - INFO - Detección activa: True
+2025-02-27 14:38:19,113 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:38:19,113 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:38:19,113 - INFO - --------------------------------------------------
+2025-02-27 14:38:21,126 - INFO - Detección activa: True
+2025-02-27 14:38:21,127 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:38:21,127 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:38:21,127 - INFO - --------------------------------------------------
+2025-02-27 14:38:23,139 - INFO - Detección activa: True
+2025-02-27 14:38:23,139 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:38:23,139 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:38:23,140 - INFO - --------------------------------------------------
+2025-02-27 14:38:25,150 - INFO - Detección activa: True
+2025-02-27 14:38:25,151 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:38:25,151 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:38:25,151 - INFO - --------------------------------------------------
+2025-02-27 14:38:27,164 - INFO - Detección activa: True
+2025-02-27 14:38:27,164 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:38:27,164 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:38:27,165 - INFO - --------------------------------------------------
+2025-02-27 14:38:29,173 - INFO - Detección activa: True
+2025-02-27 14:38:29,174 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:38:29,174 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:38:29,174 - INFO - --------------------------------------------------
+2025-02-27 14:45:12,214 - INFO - Iniciando monitoreo de detección...
+2025-02-27 14:45:12,222 - INFO - Detección activa: True
+2025-02-27 14:45:12,222 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:45:12,222 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:45:12,222 - INFO - --------------------------------------------------
+2025-02-27 14:45:14,231 - INFO - Detección activa: True
+2025-02-27 14:45:14,231 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:45:14,231 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:45:14,232 - INFO - --------------------------------------------------
+2025-02-27 14:45:16,241 - INFO - Detección activa: True
+2025-02-27 14:45:16,242 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:45:16,242 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:45:16,242 - INFO - --------------------------------------------------
+2025-02-27 14:45:18,253 - INFO - Detección activa: True
+2025-02-27 14:45:18,253 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:45:18,253 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:45:18,253 - INFO - --------------------------------------------------
+2025-02-27 14:45:20,264 - INFO - Detección activa: True
+2025-02-27 14:45:20,265 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:45:20,265 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:45:20,265 - INFO - --------------------------------------------------
+2025-02-27 14:45:22,280 - INFO - Detección activa: True
+2025-02-27 14:45:22,281 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:45:22,281 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:45:22,281 - INFO - --------------------------------------------------
+2025-02-27 14:45:24,290 - INFO - Detección activa: True
+2025-02-27 14:45:24,291 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:45:24,291 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:45:24,291 - INFO - --------------------------------------------------
+2025-02-27 14:45:26,305 - INFO - Detección activa: True
+2025-02-27 14:45:26,305 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:45:26,305 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:45:26,305 - INFO - --------------------------------------------------
+2025-02-27 14:45:28,314 - INFO - Detección activa: True
+2025-02-27 14:45:28,314 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:45:28,314 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:45:28,314 - INFO - --------------------------------------------------
+2025-02-27 14:45:30,325 - INFO - Detección activa: True
+2025-02-27 14:45:30,325 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:45:30,326 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:45:30,326 - INFO - --------------------------------------------------
+2025-02-27 14:45:32,337 - INFO - Detección activa: True
+2025-02-27 14:45:32,337 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:45:32,338 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:45:32,338 - INFO - --------------------------------------------------
+2025-02-27 14:45:34,348 - INFO - Detección activa: True
+2025-02-27 14:45:34,349 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:45:34,349 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:45:34,349 - INFO - --------------------------------------------------
+2025-02-27 14:45:36,358 - INFO - Detección activa: True
+2025-02-27 14:45:36,358 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:45:36,358 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:45:36,359 - INFO - --------------------------------------------------
+2025-02-27 14:45:38,369 - INFO - Detección activa: True
+2025-02-27 14:45:38,370 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:45:38,370 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:45:38,370 - INFO - --------------------------------------------------
+2025-02-27 14:48:54,153 - INFO - Iniciando monitoreo de detección...
+2025-02-27 14:48:54,162 - INFO - Detección activa: True
+2025-02-27 14:48:54,163 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:48:54,163 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:48:54,163 - INFO - --------------------------------------------------
+2025-02-27 14:48:56,172 - INFO - Detección activa: True
+2025-02-27 14:48:56,172 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:48:56,172 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:48:56,172 - INFO - --------------------------------------------------
+2025-02-27 14:48:58,182 - INFO - Detección activa: True
+2025-02-27 14:48:58,183 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:48:58,183 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:48:58,183 - INFO - --------------------------------------------------
+2025-02-27 14:49:00,194 - INFO - Detección activa: True
+2025-02-27 14:49:00,194 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:49:00,194 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:49:00,195 - INFO - --------------------------------------------------
+2025-02-27 14:49:02,205 - INFO - Detección activa: True
+2025-02-27 14:49:02,205 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:49:02,206 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:49:02,206 - INFO - --------------------------------------------------
+2025-02-27 14:49:04,218 - INFO - Detección activa: True
+2025-02-27 14:49:04,218 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:49:04,218 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:49:04,218 - INFO - --------------------------------------------------
+2025-02-27 14:49:06,229 - INFO - Detección activa: True
+2025-02-27 14:49:06,230 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:49:06,230 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:49:06,230 - INFO - --------------------------------------------------
+2025-02-27 14:49:08,241 - INFO - Detección activa: True
+2025-02-27 14:49:08,241 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:49:08,241 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:49:08,241 - INFO - --------------------------------------------------
+2025-02-27 14:49:10,252 - INFO - Detección activa: True
+2025-02-27 14:49:10,252 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:49:10,253 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:49:10,253 - INFO - --------------------------------------------------
+2025-02-27 14:49:12,264 - INFO - Detección activa: True
+2025-02-27 14:49:12,265 - INFO - Última detección: Pizza: False, Blister: False
+2025-02-27 14:49:12,265 - INFO - Timestamp: 2025-02-27T13:37:12.725041
+2025-02-27 14:49:12,265 - INFO - --------------------------------------------------

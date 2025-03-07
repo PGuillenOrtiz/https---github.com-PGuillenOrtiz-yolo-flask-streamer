@@ -1,0 +1,11 @@
+DATABASE_URI = 'sqlite:///site.db'
+SECRET_KEY = 'your_secret_key_here'
+DEBUG = True
+VIDEO_SOURCE = 0  # Change this to the appropriate video source if needed
+CONF_THRESHOLD = 0.5  # Confidence threshold for YOLO detections
+PLC_IP = '192.168.1.100'  # Example PLC IP
+PLC_RACK = 0
+PLC_SLOT = 1
+PLC_DB = 1
+PLC_BYTE = 0
+PLC_BIT = 0
