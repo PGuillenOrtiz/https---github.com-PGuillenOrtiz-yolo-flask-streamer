@@ -61,39 +61,33 @@ def stop_detection():
 @app.route('/status', methods=['GET'])
 def status():
     """Endpoint para verificar el estado de la detección y PLC"""
-    global camera_instance
-    
-    # Actualizar el campo timestamp si no existe
-    if shared_state.last_detection["timestamp"] is None:
-        import datetime
-        shared_state.last_detection["timestamp"] = datetime.datetime.now().isoformat()
-    
-    # Determinar el estado de los bits del PLC
-    plc_bit0_active = shared_state.last_detection["pizza"] and not shared_state.last_detection["blister"]
-    plc_bit1_active = shared_state.last_detection["pizza"] and shared_state.last_detection["blister"]
+    from app.camera import _counter_pizza_sin_blister, _counter_pizza_con_blister, _counter_total
     
     # Asegurarse de que todos los campos necesarios estén presentes
     detection_data = shared_state.last_detection.copy()
     
-    # Añadir campos si no existen
-    if "counter_sin_blister" not in detection_data:
-        detection_data["counter_sin_blister"] = 0
-    if "counter_con_blister" not in detection_data:
-        detection_data["counter_con_blister"] = 0
-    if "counter_total" not in detection_data:
-        detection_data["counter_total"] = 0
-    if "porcentaje_sin_blister" not in detection_data:
-        detection_data["porcentaje_sin_blister"] = 0
-    if "porcentaje_con_blister" not in detection_data:
-        detection_data["porcentaje_con_blister"] = 0
+    # Forzar la actualización de los contadores desde las variables globales
+    detection_data["counter_sin_blister"] = _counter_pizza_sin_blister
+    detection_data["counter_con_blister"] = _counter_pizza_con_blister
+    detection_data["counter_total"] = _counter_total
+    
+    # Calcular porcentajes
+    total = detection_data["counter_total"] if detection_data["counter_total"] > 0 else 1
+    detection_data["porcentaje_sin_blister"] = (detection_data["counter_sin_blister"] / total) * 100
+    detection_data["porcentaje_con_blister"] = (detection_data["counter_con_blister"] / total) * 100
+    
+    # Verificar estado de conexión OPC-UA
+    from app.camera import _opcua_client
+    opcua_connected = _opcua_client and _opcua_client.connected if _opcua_client else False
     
     return jsonify({
         "detection_enabled": shared_state.detection_enabled,
         "last_detection": detection_data,
         "plc_signals": {
-            "bit0_pizza_sin_blister": plc_bit0_active,
-            "bit1_pizza_con_blister": plc_bit1_active
+            "bit0_pizza_sin_blister": detection_data.get("pizza", False) and not detection_data.get("blister", False),
+            "bit1_pizza_con_blister": detection_data.get("pizza", False) and detection_data.get("blister", False)
         },
+        "opcua_connected": opcua_connected,
         "system_status": "active" if camera_instance is not None else "initializing"
     })
 

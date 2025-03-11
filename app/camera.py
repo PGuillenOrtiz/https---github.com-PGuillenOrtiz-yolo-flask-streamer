@@ -9,52 +9,62 @@ import time
 import datetime
 from concurrent.futures import ThreadPoolExecutor
 
-# Importar biblioteca para PLC Siemens
+# Importar biblioteca para OPC-UA
 try:
-    import snap7
-    from snap7.util import set_bool
-    PLC_AVAILABLE = True
-except ImportError:
-    PLC_AVAILABLE = False
-    logging.error("La biblioteca snap7 no está instalada. La comunicación con el PLC no estará disponible.")
+    from opcua import Client, ua
+    # Verificar que Client es una clase válida
+    if not callable(Client):
+        raise ImportError("Client class is not callable")
+    OPCUA_AVAILABLE = True
+except ImportError as e:
+    OPCUA_AVAILABLE = False
+    Client = None  # Definir Client como None para evitar NameError
+    ua = None
+    logger.error(f"La biblioteca opcua no está instalada o es incorrecta: {e}. La comunicación con el PLC no estará disponible.")
 
 # Configuración de logging
 logger = logging.getLogger(__name__)
 
-# Variables globales
+# Variables globales para la cámara y detección
 _camera_instance = None
-_camera_lock = threading.Lock()
-_background_detection_active = True
+_camera_lock = threading.RLock()
+_background_detection_active = False
 _latest_frame = None
 _latest_frame_lock = threading.Lock()
-_latest_detections = {"pizza": False, "blister": False}
+_latest_detections = {}
+_thread_pool = ThreadPoolExecutor(max_workers=5)
 
 # Contadores para estadísticas de detección
 _counter_pizza_sin_blister = 0
 _counter_pizza_con_blister = 0
 _counter_total = 0
-_counters_lock = threading.Lock()  # Para evitar condiciones de carrera al actualizar contadores
+_counters_lock = threading.Lock()
 
-# Cliente PLC global para mantener una conexión persistente
-_plc_client = None
-_plc_reconnect_thread = None
-_plc_should_reconnect = True  # Flag para controlar el hilo de reconexión
+# Cliente OPC-UA global para mantener una conexión persistente
+_opcua_client = None
+_opcua_reconnect_thread = None
+_opcua_should_reconnect = True  # Flag para controlar el hilo de reconexión
 _thread_pool = ThreadPoolExecutor(max_workers=10)  # Pool de hilos compartido
 
-class PLCClient:
+class OPCUAClient:
     """
-    Clase para gestionar la comunicación con el PLC usando snap7 de forma persistente.
-    Se conecta al PLC una sola vez y se utiliza la conexión para todas las operaciones.
+    Clase para gestionar la comunicación con el PLC usando OPC-UA de forma persistente.
+    Se conecta al servidor OPC-UA una sola vez y se utiliza la conexión para todas las operaciones.
     """
     def __init__(self, config):
-        self.ip = config['PLC_IP']
-        self.rack = config['PLC_RACK']
-        self.slot = config['PLC_SLOT']
-        self.db = config['PLC_DB']
-        self.byte = config['PLC_BYTE']
-        self.bit_pizza_sin_blister = config['PLC_BIT']
-        self.bit_pizza_con_blister = config['PLC_BIT'] + 1
-        self.client = snap7.client.Client()
+        # Verificar disponibilidad antes de usar Client
+        if not OPCUA_AVAILABLE:
+            logger.error("OPC UA no disponible, inicialización fallida")
+            self.client = None
+            self.connected = False
+            return
+        
+        self.url = config.get('OPCUA_URL', 'opc.tcp://192.168.9.20:4840')
+        self.node_sin_blister_id = config.get('OPCUA_NODE_SIN_BLISTER', 'ns=4;i=3')
+        self.node_con_blister_id = config.get('OPCUA_NODE_CON_BLISTER', 'ns=4;i=4')
+        self.client = Client(self.url)
+        self.node_sin_blister = None
+        self.node_con_blister = None
         self.connected = False
         self.lock = threading.Lock()
         self.reconnect_interval = 5  # Intentar reconectar cada 5 segundos
@@ -64,38 +74,38 @@ class PLCClient:
         self.start_reconnect_thread()
     
     def start_reconnect_thread(self):
-        """Inicia un thread que monitorea y restablece la conexión con el PLC"""
-        global _plc_reconnect_thread
-        global _plc_should_reconnect
+        """Inicia un thread que monitorea y restablece la conexión con el servidor OPC-UA"""
+        global _opcua_reconnect_thread
+        global _opcua_should_reconnect
         
-        if _plc_reconnect_thread is None or not _plc_reconnect_thread.is_alive():
-            _plc_should_reconnect = True
-            _plc_reconnect_thread = threading.Thread(
+        if _opcua_reconnect_thread is None or not _opcua_reconnect_thread.is_alive():
+            _opcua_should_reconnect = True
+            _opcua_reconnect_thread = threading.Thread(
                 target=self._reconnect_loop,
                 daemon=True
             )
-            _plc_reconnect_thread.start()
-            logger.info("Thread de reconexión PLC iniciado")
+            _opcua_reconnect_thread.start()
+            logger.info("Thread de reconexión OPC-UA iniciado")
         
     def _reconnect_loop(self):
         """Loop en background que intenta reconectar periódicamente si se pierde la conexión"""
-        global _plc_should_reconnect
+        global _opcua_should_reconnect
         
-        logger.info("Thread de reconexión PLC iniciado")
+        logger.info("Thread de reconexión OPC-UA iniciado")
         consecutive_failures = 0
         
-        while _plc_should_reconnect:
+        while _opcua_should_reconnect:
             try:
                 # Si no está conectado, intentar conectar
                 if not self.connected:
                     # Reiniciar completamente el cliente después de varios fallos
                     if consecutive_failures > 10:
-                        logger.warning("Múltiples fallos consecutivos. Recreando cliente snap7...")
+                        logger.warning("Múltiples fallos consecutivos. Recreando cliente OPC-UA...")
                         try:
                             self.client.disconnect()
                         except:
                             pass
-                        self.client = snap7.client.Client()
+                        self.client = Client(self.url)
                         consecutive_failures = 0
                     
                     success = self.connect(force=True)
@@ -109,13 +119,13 @@ class PLCClient:
                         consecutive_failures = 0
                     else:
                         consecutive_failures += 1
-                        logger.warning(f"La conexión al PLC parece estar caída ({consecutive_failures} fallos)")
+                        logger.warning(f"La conexión al servidor OPC-UA parece estar caída ({consecutive_failures} fallos)")
                 
                 # Ajustar intervalo según número de fallos (backoff exponencial limitado)
                 wait_time = min(self.reconnect_interval * (1 + consecutive_failures * 0.2), 30)
                 time.sleep(wait_time)
             except Exception as e:
-                logger.error(f"Error en thread de reconexión PLC: {e}")
+                logger.error(f"Error en thread de reconexión OPC-UA: {e}")
                 consecutive_failures += 1
                 time.sleep(self.reconnect_interval)
                 
@@ -123,13 +133,13 @@ class PLCClient:
         """Verifica si la conexión sigue activa"""
         try:
             # Intentar una operación simple para verificar conexión
-            if self.client.get_connected():
+            if self.client and hasattr(self.client, "uaclient") and self.client.uaclient:
                 try:
-                    # Intentar leer un byte para verificar que la conexión realmente funciona
-                    self.client.db_read(self.db, self.byte, 1)
+                    # Leer un atributo del servidor para verificar la conexión
+                    self.client.get_namespace_array()
                     return True
                 except Exception:
-                    logger.warning("Conexión PLC inactiva, marcando como desconectado")
+                    logger.warning("Conexión OPC-UA inactiva, marcando como desconectado")
                     self.connected = False
                     return False
             else:
@@ -154,102 +164,80 @@ class PLCClient:
             self.last_connection_attempt = current_time
             
             # Intentar desconectar primero si ya estaba conectado
-            if self.client.get_connected():
-                try:
-                    self.client.disconnect()
-                except Exception:
-                    pass
+            try:
+                self.client.disconnect()
+            except Exception:
+                pass
             
             # Intentar conectar
             try:
-                logger.info(f"Intentando conectar al PLC en {self.ip}...")
-                self.client.connect(self.ip, self.rack, self.slot)
-                self.connected = self.client.get_connected()
+                logger.info(f"Intentando conectar al servidor OPC-UA en {self.url}...")
+                self.client.connect()
                 
-                if self.connected:
-                    # Verificar la conexión con una lectura de prueba
+                # Obtener los nodos
+                try:
+                    self.node_sin_blister = self.client.get_node(self.node_sin_blister_id)
+                    self.node_con_blister = self.client.get_node(self.node_con_blister_id)
+                    
+                    logger.info(f"Nodo sin blister: {self.node_sin_blister.nodeid}")
+                    logger.info(f"Nodo con blister: {self.node_con_blister.nodeid}")
+                    
+                    self.connected = True
+                    logger.info(f"✓ Conexión OPC-UA establecida con {self.url}")
+                    return True
+                except Exception as e:
+                    logger.error(f"Error al obtener nodos OPC-UA: {e}")
+                    self.connected = False
                     try:
-                        data = self.client.db_read(self.db, self.byte, 1)
-                        logger.info(f"✅ Conectado al PLC en {self.ip} - Lectura de prueba: {data.hex()}")
-                        return True
-                    except Exception as e:
-                        logger.error(f"La conexión se estableció pero la lectura falló: {e}")
-                        self.connected = False
-                        return False
-                else:
-                    logger.error(f"❌ No se pudo conectar al PLC en {self.ip}")
+                        self.client.disconnect()
+                    except:
+                        pass
                     return False
             except Exception as e:
-                logger.error(f"❌ Error al conectar con el PLC: {e}")
+                logger.error(f"✗ Error al conectar con servidor OPC-UA: {e}")
                 self.connected = False
                 return False
 
     def disconnect(self):
         """Cierra la conexión si está abierta."""
         with self.lock:
-            if self.connected or self.client.get_connected():
+            if self.connected:
                 try:
                     self.client.disconnect()
                     self.connected = False
-                    logger.info("Conexión con el PLC cerrada.")
+                    logger.info("Conexión con el servidor OPC-UA cerrada.")
                 except Exception as e:
-                    logger.error(f"Error al desconectar del PLC: {e}")
+                    logger.error(f"Error al desconectar del servidor OPC-UA: {e}")
                     self.connected = False
 
-    def write_pizza_sin_blister(self, value: bool):
-        """Escribe en el bit correspondiente a pizza sin blister (pulso)"""
+    def write_value(self, node, value: bool):
+        """Escribe un valor booleano en un nodo OPC-UA"""
         with self.lock:
             if not self.connected:
                 self.connect()
                 if not self.connected:
-                    logger.warning(f"No se pudo escribir bit pizza sin blister: PLC no conectado")
+                    logger.warning(f"No se pudo escribir valor: OPC-UA no conectado")
                     return False
             
             try:
-                # Leer el byte actual
-                data = self.client.db_read(self.db, self.byte, 1)
-                
-                # Modificar el bit para pizza sin blister
-                set_bool(data, 0, self.bit_pizza_sin_blister, value)
-                
-                # Escribir de vuelta al PLC
-                self.client.db_write(self.db, self.byte, data)
-                
-                logger.info(f"Bit pizza sin blister (DB{self.db}.DBX{self.byte}.{self.bit_pizza_sin_blister}) = {value}")
+                dv = ua.DataValue(ua.Variant(value, ua.VariantType.Boolean))
+                node.set_attribute(ua.AttributeIds.Value, dv)
                 return True
             except Exception as e:
-                logger.error(f"Error al escribir bit pizza sin blister: {e}")
+                logger.error(f"Error al escribir valor en nodo OPC-UA: {e}")
                 self.connected = False
                 return False
+    
+    def write_pizza_sin_blister(self, value: bool):
+        """Escribe en el nodo correspondiente a pizza sin blister"""
+        return self.write_value(self.node_sin_blister, value)
     
     def write_pizza_con_blister(self, value: bool):
-        """Escribe en el bit correspondiente a pizza con blister (pulso)"""
-        with self.lock:
-            if not self.connected:
-                self.connect()
-                if not self.connected:
-                    logger.warning(f"No se pudo escribir bit pizza con blister: PLC no conectado")
-                    return False
-                
-            try:
-                # Leer el byte actual
-                data = self.client.db_read(self.db, self.byte, 1)
-                
-                # Modificar el bit para pizza con blister
-                set_bool(data, 0, self.bit_pizza_con_blister, value)
-                
-                # Escribir de vuelta al PLC
-                self.client.db_write(self.db, self.byte, data)
-                
-                logger.info(f"Bit pizza con blister (DB{self.db}.DBX{self.byte}.{self.bit_pizza_con_blister}) = {value}")
-                return True
-            except Exception as e:
-                logger.error(f"Error al escribir bit pizza con blister: {e}")
-                self.connected = False
-                return False
+        """Escribe en el nodo correspondiente a pizza con blister"""
+        return self.write_value(self.node_con_blister, value)
     
     def generate_pulse_pizza_sin_blister(self):
-        """Genera un pulso en el bit de pizza sin blister sin bloquear el hilo principal"""
+        """Genera un pulso en el nodo de pizza sin blister sin bloquear el hilo principal"""
         global _thread_pool
         
         # Usar el pool de hilos en lugar de crear uno nuevo cada vez
@@ -260,7 +248,7 @@ class PLCClient:
         """Método interno para ejecutar el pulso"""
         try:
             if not self.connected:
-                logger.info("Intentando reconectar al PLC antes de enviar pulso...")
+                logger.info("Intentando reconectar al OPC-UA antes de enviar pulso...")
                 self.connect(force=True)
             
             # Intentar enviar pulso aunque la conexión falle
@@ -277,7 +265,7 @@ class PLCClient:
             logger.error(f"❌ Error en thread de pulso: {e}")
 
     def generate_pulse_pizza_con_blister(self):
-        """Genera un pulso en el bit de pizza con blister sin bloquear el hilo principal"""
+        """Genera un pulso en el nodo de pizza con blister sin bloquear el hilo principal"""
         global _thread_pool
         
         # Usar el pool de hilos en lugar de crear uno nuevo cada vez
@@ -288,7 +276,7 @@ class PLCClient:
         """Método interno para ejecutar el pulso"""
         try:
             if not self.connected:
-                logger.info("Intentando reconectar al PLC antes de enviar pulso...")
+                logger.info("Intentando reconectar al OPC-UA antes de enviar pulso...")
                 self.connect(force=True)
             
             # Intentar enviar pulso aunque la conexión falle
@@ -310,12 +298,12 @@ class VideoCamera:
         global _camera_instance
         global _camera_lock
         global _background_detection_active
-        global _plc_client
+        global _opcua_client
         
-        # Inicializar la conexión PLC con sistema de reconexión
-        if _plc_client is None:
-            logger.info("Inicializando cliente PLC con reconexión automática")
-            _plc_client = PLCClient(config)
+        # Inicializar la conexión OPC-UA con sistema de reconexión
+        if _opcua_client is None:
+            logger.info("Inicializando cliente OPC-UA con reconexión automática")
+            _opcua_client = OPCUAClient(config)
             # El cliente ahora maneja su propia reconexión automática
         
         with _camera_lock:
@@ -335,8 +323,10 @@ class VideoCamera:
         self.frame_lock = threading.Lock()
 
     def start_background_detection_thread(self, config):
-        """Inicia un thread dedicado para la detección en segundo plano"""
-        logger.info("Iniciando thread de detección en segundo plano")
+        """Avvia un thread dedicato per il rilevamento in background"""
+        global _background_detection_active
+        _background_detection_active = True  # Imposta a True prima di avviare il thread
+        logger.info("Avvio thread di rilevamento in background")
         bg_thread = threading.Thread(
             target=self.background_detection_loop,
             args=(config,),
@@ -356,7 +346,7 @@ class VideoCamera:
         global _latest_detections
         global _latest_frame
         global _latest_frame_lock
-        global _plc_client
+        global _opcua_client
         global _counter_pizza_sin_blister
         global _counter_pizza_con_blister
         global _counter_total
@@ -409,9 +399,9 @@ class VideoCamera:
                                  config['RED_DOT_RADIUS'], config['RED_DOT_COLOR'])
                     
                     # Detectar flanco de subida: de False a True
-                    if not previous_red and _plc_client:
+                    if not previous_red and _opcua_client:
                         logger.info("¡FLANCO DETECTADO! Generando pulso para pizza sin blister")
-                        _plc_client.generate_pulse_pizza_sin_blister()
+                        _opcua_client.generate_pulse_pizza_sin_blister()
                         
                         # Actualizar contadores
                         with _counters_lock:
@@ -427,14 +417,15 @@ class VideoCamera:
                                  config['GREEN_DOT_RADIUS'], config['GREEN_DOT_COLOR'])
                     
                     # Detectar flanco de subida para pizza con blister
-                    if not previous_green and _plc_client:
+                    if not previous_green and _opcua_client:
                         logger.info("¡FLANCO DETECTADO! Generando pulso para pizza con blister")
-                        _plc_client.generate_pulse_pizza_con_blister()
+                        _opcua_client.generate_pulse_pizza_con_blister()
                         
                         # Actualizar contadores
                         with _counters_lock:
                             _counter_pizza_con_blister += 1
                             _counter_total += 1
+                            print(_counter_pizza_con_blister)
                     
                     previous_red = False
                     previous_green = True
@@ -452,8 +443,8 @@ class VideoCamera:
                     _, jpeg = cv2.imencode('.jpg', annotated_frame)
                     _latest_frame = jpeg.tobytes()
                 
-                # Define plc_connected FUERA del bloque condicional
-                plc_connected = _plc_client and _plc_client.connected if _plc_client else False
+                # Define opcua_connected FUERA del bloque condicional
+                opcua_connected = _opcua_client and _opcua_client.connected if _opcua_client else False
                 
                 # AÑADIR ESTE CÓDIGO para calcular los porcentajes (sin dibujar en pantalla)
                 total = _counter_total if _counter_total > 0 else 1  # Evitar división por cero
@@ -473,7 +464,7 @@ class VideoCamera:
                         "blister": detections['blister'],
                         "conf_pizza": detections['conf_pizza'],
                         "conf_blister": detections['conf_blister'],
-                        "plc_connected": plc_connected,
+                        "opcua_connected": opcua_connected,
                         "counter_sin_blister": _counter_pizza_sin_blister,
                         "counter_con_blister": _counter_pizza_con_blister,
                         "counter_total": _counter_total,
@@ -487,7 +478,7 @@ class VideoCamera:
                 if iteration_count % 10 == 0:
                     logger.info(f"BG Detection: Pizza={detections['pizza']}({detections['conf_pizza']}%), "
                                f"Blister={detections['blister']}({detections['conf_blister']}%), "
-                               f"PLC={plc_connected}, "
+                               f"OPCUA={opcua_connected}, "
                                f"Estadísticas=[{_counter_pizza_sin_blister}/{_counter_pizza_con_blister}]")
                 
                 # Pausa breve para no saturar el sistema
@@ -568,13 +559,13 @@ class VideoCamera:
         # Actualizar el estado compartido si se proporcionó
         if shared_state:
             # Agregar estado del PLC
-            plc_connected = _plc_client and _plc_client.connected if _plc_client else False
+            opcua_connected = _opcua_client and _opcua_client.connected if _opcua_client else False
             shared_state.last_detection = {
                 "pizza": flags['pizza'],
                 "blister": flags['blister'],
                 "conf_pizza": flags['conf_pizza'],
                 "conf_blister": flags['conf_blister'],
-                "plc_connected": plc_connected,
+                "opcua_connected": opcua_connected,
                 "timestamp": datetime.datetime.now().isoformat()
             }
         
@@ -652,14 +643,14 @@ def generate_frames(config, shared_state):
 def cleanup():
     """Limpia recursos globales al finalizar la aplicación"""
     global _camera_instance
-    global _plc_client
-    global _plc_should_reconnect
+    global _opcua_client
+    global _opcua_should_reconnect
     global _thread_pool
     
     logger.info("Limpiando recursos antes de finalizar...")
     
     # Detener thread de reconexión
-    _plc_should_reconnect = False
+    _opcua_should_reconnect = False
     
     # Apagar el pool de hilos
     try:
@@ -667,10 +658,10 @@ def cleanup():
     except:
         pass
     
-    # Desconectar PLC
-    if _plc_client:
+    # Desconectar OPC-UA
+    if _opcua_client:
         try:
-            _plc_client.disconnect()
+            _opcua_client.disconnect()
         except:
             pass
     
@@ -680,3 +671,18 @@ def cleanup():
             _camera_instance.release()
         except:
             pass
+
+def reset_counters():
+    """Reinicia los contadores de detección"""
+    global _counter_pizza_sin_blister
+    global _counter_pizza_con_blister
+    global _counter_total
+    global _counters_lock
+    
+    with _counters_lock:
+        _counter_pizza_sin_blister = 0
+        _counter_pizza_con_blister = 0
+        _counter_total = 0
+    
+    logger.info("Contadores de detección reiniciados")
+    return True

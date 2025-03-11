@@ -23,41 +23,57 @@ window.onload = function() {
     updateStatus();
 };
 
-// Añadir/modificar en main.js
+// Variables globales para el estado del PLC
+let plcLastKnownStatus = false;
+let plcStatusConfirmationCount = 0;
+const PLC_STATUS_CONFIRMATION_THRESHOLD = 3; // Requiere 3 lecturas consecutivas para cambiar el estado
+
 function updateStatus() {
-    console.log("Solicitando estado...");
     fetch('/status')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error en la respuesta del servidor');
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
-            console.log("Respuesta completa:", data);
-            console.log("Estado PLC:", data.plc_connected ? "Conectado" : "Desconectado");
-            console.log("Estado recibido:", data);  // Añade esto para depuración
+            console.log("Datos recibidos:", data);
             
-            // Actualizar estado de PLC
+            // Actualizar estado PLC con histéresis para evitar parpadeo
             const plcStatus = document.getElementById('plc-status');
             if (plcStatus) {
-                if (data.plc_connected) {
-                    plcStatus.textContent = 'Conectado';
-                    plcStatus.className = 'status-value connected';
-                    console.log("PLC marcado como conectado");
+                const currentStatus = data.opcua_connected;
+                
+                // Lógica de histéresis - solo cambia el estado después de varias confirmaciones
+                if (currentStatus === plcLastKnownStatus) {
+                    // Estado estable, mantener contador en 0
+                    plcStatusConfirmationCount = 0;
                 } else {
-                    plcStatus.textContent = 'Desconectado';
-                    plcStatus.className = 'status-value disconnected';
-                    console.log("PLC marcado como desconectado");
+                    // Estado diferente del último conocido, incrementar contador
+                    plcStatusConfirmationCount++;
+                    
+                    // Solo cambiar el estado visual después de superar el umbral
+                    if (plcStatusConfirmationCount >= PLC_STATUS_CONFIRMATION_THRESHOLD) {
+                        // Actualizar el estado visual
+                        plcLastKnownStatus = currentStatus;
+                        plcStatusConfirmationCount = 0;
+                        
+                        // Aplicar el cambio visual
+                        if (currentStatus) {
+                            plcStatus.innerHTML = '<span class="status-indicator connected"></span>Conectado';
+                            plcStatus.className = 'status-value connected';
+                        } else {
+                            plcStatus.innerHTML = '<span class="status-indicator disconnected"></span>Desconectado';
+                            plcStatus.className = 'status-value disconnected';
+                        }
+                    }
+                    // Si no supera el umbral, mantener el estado visual anterior
                 }
-            } else {
-                console.error("No se encontró el elemento plc-status en el DOM");
             }
             
-            // [resto del código sin cambios]
+            // Resto del código de actualización...
+            // Actualizar contadores usando los datos de last_detection
+            if (data.last_detection) {
+                updateCounters(data.last_detection);
+            }
         })
-        .catch(error => {
-            console.error('Error al obtener estado:', error);
+        .catch(err => {
+            console.error('Error al actualizar estado:', err);
         });
 }
 

@@ -7,12 +7,20 @@ class Config:
     DEBUG = True
     VIDEO_SOURCE = 0  # Change this to the appropriate video source (e.g., camera index or video file path)
     CONF_THRESHOLD = 0.5  # Confidence threshold for YOLO detections
+    
+    # PLC Configuration (legacy Snap7)
     PLC_IP = '192.168.9.20'  # Replace with your PLC IP
     PLC_RACK = 0
     PLC_SLOT = 1
     PLC_DB = 15
     PLC_BYTE = 0
     PLC_BIT = 0
+    
+    # OPC-UA Configuration
+    OPCUA_URL = "opc.tcp://192.168.9.20:4840"
+    OPCUA_NODE_SIN_BLISTER = "ns=4;i=3"  # NodeId para pizza sin blister
+    OPCUA_NODE_CON_BLISTER = "ns=4;i=4"  # NodeId para pizza con blister
+    
     WINDOW_NAME = 'YOLO Video Stream'
     RED_DOT_POSITION = (50,50)
     RED_DOT_RADIUS = 15

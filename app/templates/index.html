@@ -170,6 +170,25 @@
     color: red;
     font-weight: bold;
     }
+
+    /* Estilo mejorado para indicadores de estado */
+    .status-value.connected, .status-value.active {
+      background-color: #00ff00;
+      color: #000;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: all 0.5s ease;
+    }
+
+    .status-value.disconnected, .status-value.inactive {
+      background-color: #ff0000;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: all 0.5s ease;
+    }
   </style>
 </head>
 <body>
@@ -194,7 +213,9 @@
         <div class="status-panel">
           <div class="status-item">
               <span class="status-label">Estado PLC:</span>
-              <span id="plc-status" class="status-value disconnected">Desconectado</span>
+              <span id="plc-status" class="status-value disconnected">
+                  <span class="status-indicator disconnected"></span>Desconectado
+              </span>
           </div>
           <div class="status-item">
               <span class="status-label">Detección:</span>
@@ -209,19 +230,19 @@
           <svg viewBox="0 0 42 42" class="donut">
             <!-- Fondo del donut -->
             <circle class="donut-ring" cx="21" cy="21" r="15.915" fill="transparent" stroke="#444" stroke-width="3"></circle>
-            <!-- Segmento verde: pizza con blister -->
-            <circle class="donut-segment green" cx="21" cy="21" r="15.915" fill="transparent" stroke="#00ff00" stroke-width="3" stroke-dasharray="60 40" transform="rotate(-90 21 21)"></circle>
-            <!-- Segmento rojo: pizza sin blister -->
-            <circle class="donut-segment red" cx="21" cy="21" r="15.915" fill="transparent" stroke="#ff0000" stroke-width="3" stroke-dasharray="40 60" stroke-dashoffset="-60" transform="rotate(-90 21 21)"></circle>
+            <!-- Segmento verde: pizza con blister (inicialmente 0%) -->
+            <circle class="donut-segment green" cx="21" cy="21" r="15.915" fill="transparent" stroke="#00ff00" stroke-width="3" stroke-dasharray="0 100" transform="rotate(-90 21 21)"></circle>
+            <!-- Segmento rojo: pizza sin blister (inicialmente 0%) -->
+            <circle class="donut-segment red" cx="21" cy="21" r="15.915" fill="transparent" stroke="#ff0000" stroke-width="3" stroke-dasharray="0 100" stroke-dashoffset="0" transform="rotate(-90 21 21)"></circle>
           </svg>
           <div class="donut-counters">
             <div class="counter">
-              <span id="green-counter">60%</span>
+              <span id="green-counter">0%</span>
               <p>Con Blister</p>
               <span id="green-counter-value">0</span>
             </div>
             <div class="counter">
-              <span id="red-counter">40%</span>
+              <span id="red-counter">0%</span>
               <p>Sin Blister</p>
               <span id="red-counter-value">0</span>
             </div>
@@ -229,30 +250,42 @@
           <div id="total-counter" style="margin-top: 10px; font-weight: bold;">Total: 0</div>
           <button onclick="resetCounters()" class="control-btn" style="margin-top: 10px;">Reiniciar contadores</button>
         </div>
+        
+        </div>
       </div>
     </div>
   </div>
 
   <script>
+    // Variables globales para el estado del PLC
+    let plcLastKnownStatus = false;
+    let plcStatusConfirmationCount = 0;
+    const PLC_STATUS_CONFIRMATION_THRESHOLD = 2; // Requiere 2 lecturas consecutivas para cambiar el estado
+
+    // LOG para depuración
+    console.log("Loading script...");
+
     // Funciones para iniciar y detener la detección
     function startDetection() {
+      console.log("Iniciando detección...");
       fetch('/start_detection', { method: 'POST' })
         .then(response => response.json())
         .then(data => {
           if (data.success) {
-            console.log('Detection started');
-            updateStatistics(); // Actualizar estado inmediatamente
+            console.log('Detección iniciada');
+            updateUI(); // Actualizar estado inmediatamente
           }
         });
     }
     
     function stopDetection() {
+      console.log("Deteniendo detección...");
       fetch('/stop_detection', { method: 'POST' })
         .then(response => response.json())
         .then(data => {
           if (data.success) {
-            console.log('Detection stopped');
-            updateStatistics(); // Actualizar estado inmediatamente
+            console.log('Detección detenida');
+            updateUI(); // Actualizar estado inmediatamente
           }
         });
     }
@@ -286,6 +319,8 @@
     
     // Función para animar y actualizar el donut-chart
     function animateDonut(porcentajeConBlister) {
+      console.log("Animando donut con:", porcentajeConBlister);
+      
       // Redondeamos a enteros para los porcentajes del SVG
       const porcentajeConBlisterInt = Math.round(porcentajeConBlister);
       const porcentajeSinBlisterInt = 100 - porcentajeConBlisterInt;
@@ -293,6 +328,11 @@
       // Actualizar los dos segmentos del donut
       const greenSegment = document.querySelector('.donut-segment.green');
       const redSegment = document.querySelector('.donut-segment.red');
+      
+      if (!greenSegment || !redSegment) {
+        console.error("ERROR: No se encontraron elementos del donut chart");
+        return;
+      }
       
       // El atributo stroke-dasharray controla qué porcentaje del círculo se colorea
       greenSegment.setAttribute('stroke-dasharray', `${porcentajeConBlisterInt} ${porcentajeSinBlisterInt}`);
@@ -304,45 +344,70 @@
       document.getElementById('red-counter').textContent = `${porcentajeSinBlisterInt}%`;
     }
     
-    // Función para actualizar estadísticas periódicamente
-    function updateStatistics() {
+    // FUNCIÓN ÚNICA para actualizar toda la UI
+    function updateUI() {
+      console.log("Actualizando UI...");
+      
       fetch('/status')
-        .then(response => response.json())
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Error de servidor: ${response.status}`);
+          }
+          return response.json();
+        })
         .then(data => {
-          console.log("Datos recibidos:", data); // Para debugging
+          console.log("Datos recibidos:", data);
           
-          // Actualizar estado del PLC primero (importante - comprobación estricta)
+          // ==== GESTIÓN DEL ESTADO DEL PLC CON HISTÉRESIS ====
           const plcStatus = document.getElementById('plc-status');
-          if (data.last_detection && data.last_detection.plc_connected === true) {
-            plcStatus.textContent = 'Conectado';
-            plcStatus.className = 'status-value connected';
+          const currentStatus = data.opcua_connected === true;
+          
+          // Solo actualizar UI si cambió de estado Y lleva varios intentos en el mismo estado
+          if (currentStatus !== plcLastKnownStatus) {
+              plcStatusConfirmationCount++;
+              console.log(`Estado PLC diferente, confirmación ${plcStatusConfirmationCount}/${PLC_STATUS_CONFIRMATION_THRESHOLD}`);
+              
+              if (plcStatusConfirmationCount >= PLC_STATUS_CONFIRMATION_THRESHOLD) {
+                  // Cambiar el estado visual después de varias confirmaciones
+                  plcLastKnownStatus = currentStatus;
+                  plcStatusConfirmationCount = 0;
+                  
+                  if (currentStatus) {
+                      plcStatus.textContent = 'Conectado';
+                      plcStatus.className = 'status-value connected';
+                      console.log("PLC: CONECTADO (confirmado)");
+                  } else {
+                      plcStatus.textContent = 'Desconectado';
+                      plcStatus.className = 'status-value disconnected';
+                      console.log("PLC: DESCONECTADO (confirmado)");
+                  }
+              }
+              // Si no supera el umbral, mantiene el estado anterior
           } else {
-            plcStatus.textContent = 'Desconectado';
-            plcStatus.className = 'status-value disconnected';
+              // Si el estado no cambió, reiniciar contador
+              plcStatusConfirmationCount = 0;
           }
           
-          // Actualizar el donut chart con porcentajes reales
+          // ==== ACTUALIZACIÓN DEL DONUT Y CONTADORES ====
           if (data.last_detection) {
             const total = data.last_detection.counter_total || 0;
             
-            if (total > 0) {
-              // Obtener porcentaje con blister
-              const porcentajeConBlister = data.last_detection.porcentaje_con_blister || 0;
-              
-              // Animar el donut
-              animateDonut(porcentajeConBlister);
-              
-              // Actualizar contadores numéricos
-              document.getElementById('green-counter-value').textContent = 
-                data.last_detection.counter_con_blister || 0;
-              document.getElementById('red-counter-value').textContent = 
-                data.last_detection.counter_sin_blister || 0;
-              document.getElementById('total-counter').textContent = 
-                `Total: ${total}`;
-            }
+            // Obtener porcentaje con blister
+            const porcentajeConBlister = data.last_detection.porcentaje_con_blister || 0;
+            
+            // Animar el donut
+            animateDonut(porcentajeConBlister);
+            
+            // Actualizar contadores numéricos
+            document.getElementById('green-counter-value').textContent = 
+              data.last_detection.counter_con_blister || 0;
+            document.getElementById('red-counter-value').textContent = 
+              data.last_detection.counter_sin_blister || 0;
+            document.getElementById('total-counter').textContent = 
+              `Total: ${total}`;
           }
           
-          // Actualizar estado de detección
+          // ==== ACTUALIZACIÓN DEL ESTADO DE DETECCIÓN ====
           const detectionStatus = document.getElementById('detection-status');
           if (data.detection_enabled) {
             detectionStatus.textContent = 'Activa';
@@ -352,18 +417,24 @@
             detectionStatus.className = 'status-value inactive';
           }
         })
-        .catch(error => console.error('Error al obtener estadísticas:', error));
+        .catch(error => {
+          console.error('Error:', error);
+          document.getElementById('total-counter').textContent = 
+            `Error: ${error.message}`;
+        });
     }
     
     // Función para verificar estado del PLC
     function checkPLCStatus() {
       console.log("Verificando estado del PLC...");
-      // Forzar actualización inmediata
-      updateStatistics();
+      // Restablecer contador para permitir cambio inmediato
+      plcStatusConfirmationCount = PLC_STATUS_CONFIRMATION_THRESHOLD;
+      updateUI();
     }
     
     // Función para reiniciar contadores
     function resetCounters() {
+      console.log("Reiniciando contadores...");
       fetch('/api/reset_counters', { method: 'POST' })
         .then(response => response.json())
         .then(data => {
@@ -371,25 +442,25 @@
           if (data.success) {
             console.log('Contadores reiniciados correctamente');
             // Actualizar inmediatamente la interfaz
-            updateStatistics();
+            updateUI();
           }
         })
         .catch(error => console.error('Error al reiniciar contadores:', error));
     }
     
-    // Inicialización cuando se carga la página
-    window.onload = function() {
+    // INICIALIZACIÓN UNIFICADA
+    window.addEventListener('load', function() {
       console.log("Página cargada, iniciando sistema...");
       
-      // Iniciar stream de video
+      // Inicializar video stream
       startVideoStream();
       
-      // Primera actualización de estadísticas
-      updateStatistics();
+      // Primera actualización de UI
+      updateUI();
       
-      // Actualizar estadísticas cada 2 segundos
-      setInterval(updateStatistics, 2000);
-    };
+      // Configurar actualización periódica (UNA SOLA VEZ)
+      setInterval(updateUI, 2000);
+    });
   </script>
 </body>
 </html>

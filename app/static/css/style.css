@@ -45,3 +45,34 @@ h1 {
 .button:hover {
     background-color: #218838;
 }
+
+/* Mejorar visualización de estado PLC */
+.status-value {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-value.connected {
+    color: #28a745;
+}
+
+.status-value.disconnected {
+    color: #dc3545;
+}
+
+.status-indicator.connected {
+    background-color: #28a745;
+}
+
+.status-indicator.disconnected {
+    background-color: #dc3545;
+}
